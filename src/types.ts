@@ -9,12 +9,12 @@ export type Explanation = {
 
 export type Topic = {
   title: string;
-  explanations: Explanation[];
+  explanations: Explanation[] | null;
 };
 
 export type TopicUnit = {
   unit: string;
-  topics: Topic[];
+  topics: Topic[] ;
 };
 
 export type Module = {
@@ -42,12 +42,12 @@ export type CardProps = {
 };
 
 export type CarouselProps = {
-  explanations: Explanation[];
+  explanations: Explanation[] | null;
 };
 export  type TopicProps = {
   topic: {
     title: string;
-    explanations: Explanation[];
+    explanations: Explanation[] | null;
   };
 };
    

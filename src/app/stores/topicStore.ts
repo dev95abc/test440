@@ -1,4 +1,5 @@
-import {create} from 'zustand';
+import { create } from 'zustand';
+import { devtools } from 'zustand/middleware';
 
 type Explanation = {
   id: number;
@@ -25,39 +26,47 @@ type TopicStore = {
   // updateExplanations: (topicTitle: string, explanations: Explanation[]) => void;
 };
 
-export const useTopicStore = create<TopicStore>((set, get) => ({
-  expandedTopics: {},
-  likedExplanations: {},
-  learnedTopics: {},
+export const useTopicStore = create<TopicStore>()(
+  devtools(
+    (set, get) => ({
+      expandedTopics: {},
+      likedExplanations: {},
+      learnedTopics: {},
 
-  toggleTopicExpanded: (title) => {
-    set((state) => ({
-      expandedTopics: {
-        ...state.expandedTopics,
-        [title]: !state.expandedTopics[title],
+      toggleTopicExpanded: (title) => {
+        set((state) => ({
+          expandedTopics: {
+            ...state.expandedTopics,
+            [title]: !state.expandedTopics[title],
+          },
+        }), false, `toggleTopicExpanded/${title}`);
       },
-    }));
-  },
 
-  likeExplanation: (id) => {
-    set((state) => ({
-      likedExplanations: {
-        ...state.likedExplanations,
-        [id]: (state.likedExplanations[id] ?? 0) + 1,
+      likeExplanation: (id) => {
+        set((state) => ({
+          likedExplanations: {
+            ...state.likedExplanations,
+            [id]: (state.likedExplanations[id] ?? 0) + 1,
+          },
+        }), false, `likeExplanation/${id}`);
       },
-    }));
-  },
 
-  toggleLearned: (title) => {
-    set((state) => ({
-      learnedTopics: {
-        ...state.learnedTopics,
-        [title]: !state.learnedTopics[title],
+      toggleLearned: (title) => {
+        set((state) => ({
+          learnedTopics: {
+            ...state.learnedTopics,
+            [title]: !state.learnedTopics[title],
+          },
+        }), false, `toggleLearned/${title}`);
       },
-    }));
-  },
 
-  // updateExplanations: (topicTitle, explanations) => {
-  //   // implement if needed
-  // },
-}));
+      // updateExplanations: (topicTitle, explanations) => {
+      //   // implement if needed
+      // },
+    }),
+    {
+      name: 'TopicStore',
+      enabled: true,
+    }
+  )
+);

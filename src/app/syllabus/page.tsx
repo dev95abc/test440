@@ -54,7 +54,7 @@ export default function SyllabusPage() {
   return (
     <main className="p-4">
       <h1 className="text-2xl font-bold mb-4">📘 Your Syllabus</h1>
-      <SyllabusDisplay syllabus={syllabusData} />
+      {/* <SyllabusDisplay syllabus={syllabusData} /> */}
     </main>
   );
 }

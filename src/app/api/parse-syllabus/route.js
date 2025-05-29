@@ -1,38 +1,149 @@
 export const dynamic = 'force-dynamic';
 
-const dummyResult = {
-  "semester": "Semester 1",
-  "courseCode": "PSCS505",
-  "courseTitle": "Principles of Compiler Design",
-  "credits": 2,
+const dummyResult ={
+  "id": 1,
+  "semester_id": 1,
+  "course_code": "sagar ",
+  "course_title": "Introduction to Computer Science",
+  "credits": 4,
   "modules": [
     {
-      "module": "MODULE -1",
+      "module_number": 1,
       "units": [
         {
-          "unit": "Unit 1: Front end of Compiler",
-          "topics": [
-            "Introduction to Compiler Design: Role and importance of compilers, Phases of compilation process, Compiler architecture and components",
-            "Lexical Analysis: Role of lexical analyzer, Regular expressions and finite automata, Lexical analyzer generators (e.g., Lex)",
-            "Syntax Analysis: Role of parser, Context-free grammars, Top-down parsing (LL parsing), Bottom-up parsing (LR parsing), Syntax analyzer generators (e.g., Yacc/Bison)",
-            "Semantic Analysis: Role of semantic analyzer, Symbol table management, Type checking and type systems, Attribute grammars",
-            "Intermediate Code Generation: Intermediate representations (IR), Three-address code generation, Quadruples and triples, Syntax-directed translation"
+          "unit_number": 1,
+          "chapters": [
+            {
+              "id": 1,
+              "course_id": 1,
+              "name": "Isagrntroduction to Programming",
+              "module_number": 1,
+              "unit_number": 1,
+              "topics": [
+                {
+                  "id": 1,
+                  "chapter_id": 1,
+                  "title": "What is Programming?"
+                },
+                {
+                  "id": 2,
+                  "chapter_id": 1,
+                  "title": "History of Programming Languages"
+                },
+                {
+                  "id": 3,
+                  "chapter_id": 1,
+                  "title": "Setting Up Development Environment"
+                },
+                {
+                  "id": 4,
+                  "chapter_id": 1,
+                  "title": "Writing Your First Program"
+                }
+              ]
+            }
           ]
         },
         {
-          "unit": "Unit 2: Back end of Compiler",
-          "topics": [
-            "Code Optimization: Data flow analysis, Common subexpression elimination, Constant folding and propagation, Loop optimization techniques",
-            "Code Generation: Code generation techniques, Target machine description, Register allocation, Instruction selection and scheduling",
-            "Runtime Environments: Activation records and stack management, Heap memory management, Call and return mechanisms, Exception handling",
-            "Lexical and Syntax Error Handling: Error recovery strategies, Error reporting and handling",
-            "Introduction to Compiler Tools, Techniques and Advanced Topics in Compiler Design: Lexical and syntax analyzer generators, Code generation frameworks (e.g., LLVM), Debugging and testing compilers, Just-in-time (JIT) compilation, Parallel and concurrent programming support, Compiler optimization frameworks, Domain-specific language (DSL) compilation"
+          "unit_number": 2,
+          "chapters": [
+            {
+              "id": 2,
+              "course_id": 1,
+              "name": "Variables and Data Types",
+              "module_number": 1,
+              "unit_number": 2,
+              "topics": [
+                {
+                  "id": 5,
+                  "chapter_id": 2,
+                  "title": "Understanding Variables"
+                },
+                {
+                  "id": 6,
+                  "chapter_id": 2,
+                  "title": "Primitive Data Types"
+                },
+                {
+                  "id": 7,
+                  "chapter_id": 2,
+                  "title": "Type Conversion"
+                },
+                {
+                  "id": 8,
+                  "chapter_id": 2,
+                  "title": "Constants and Literals"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "unit_number": 3,
+          "chapters": [
+            {
+              "id": 3,
+              "course_id": 1,
+              "name": "Control Structures",
+              "module_number": 1,
+              "unit_number": 3,
+              "topics": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "module_number": 2,
+      "units": [
+        {
+          "unit_number": 1,
+          "chapters": [
+            {
+              "id": 4,
+              "course_id": 1,
+              "name": "Functions",
+              "module_number": 2,
+              "unit_number": 1,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "unit_number": 2,
+          "chapters": [
+            {
+              "id": 5,
+              "course_id": 1,
+              "name": "Object-Oriented Programming",
+              "module_number": 2,
+              "unit_number": 2,
+              "topics": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "module_number": 3,
+      "units": [
+        {
+          "unit_number": 1,
+          "chapters": [
+            {
+              "id": 6,
+              "course_id": 1,
+              "name": "Basic Algorithms",
+              "module_number": 3,
+              "unit_number": 1,
+              "topics": []
+            }
           ]
         }
       ]
     }
   ]
-}
+};
 
 
 

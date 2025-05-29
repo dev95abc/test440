@@ -7,53 +7,148 @@ import ParsedSyllabus from '@/component/ParsedSyllabus'
 
 // mockData.ts
 export const mockSyllabusData = {
-  semester: "Semester 1",
-  courseCode: "PSCS505",
-  courseTitle: "Principles of Compiler Design",
-  credits: 2,
-  modules: [
+  "id": 1,
+  "semester_id": 1,
+  "course_code": "CS101",
+  "course_title": "Introduction to Computer Science",
+  "credits": 4,
+  "modules": [
     {
-      module: "MODULE -1",
-      units: [
+      "module_number": 1,
+      "units": [
         {
-          unit: "Unit 1: Front end of Compiler",
-          topics: [
+          "unit_number": 1,
+          "chapters": [
             {
-              title: "Introduction to Compiler Design",
-              explanations: null,
-              // explanations: [
-              //   {
-              //     id: 1,
-              //     text: "Compilers are programs that translate source code...",
-              //     prompt: "Original explanation",
-              //     likes: 5,
-              //   },
-              //   {
-              //     id: 2,
-              //     text: "Think of a compiler like a translator converting languages...",
-              //     prompt: "Explain like I’m 12",
-              //     likes: 8,
-              //   },
-              // ],
-            },
-            {
-              title: "Lexical Analysis",
-                explanations: null,
-              // explanations: [
-              //   {
-              //     id: 3,
-              //     text: "Lexical analysis is the first phase of a compiler...",
-              //     prompt: "Original explanation",
-              //     likes: 3,
-              //   },
-              // ],
-            },
-          ],
+              "id": 1,
+              "course_id": 1,
+              "name": "Introduction to Programming",
+              "module_number": 1,
+              "unit_number": 1,
+              "topics": [
+                {
+                  "id": 1,
+                  "chapter_id": 1,
+                  "title": "What is Programming?"
+                },
+                {
+                  "id": 2,
+                  "chapter_id": 1,
+                  "title": "History of Programming Languages"
+                },
+                {
+                  "id": 3,
+                  "chapter_id": 1,
+                  "title": "Setting Up Development Environment"
+                },
+                {
+                  "id": 4,
+                  "chapter_id": 1,
+                  "title": "Writing Your First Program"
+                }
+              ]
+            }
+          ]
         },
-        // ...more units
-      ],
+        {
+          "unit_number": 2,
+          "chapters": [
+            {
+              "id": 2,
+              "course_id": 1,
+              "name": "Variables and Data Types",
+              "module_number": 1,
+              "unit_number": 2,
+              "topics": [
+                {
+                  "id": 5,
+                  "chapter_id": 2,
+                  "title": "Understanding Variables"
+                },
+                {
+                  "id": 6,
+                  "chapter_id": 2,
+                  "title": "Primitive Data Types"
+                },
+                {
+                  "id": 7,
+                  "chapter_id": 2,
+                  "title": "Type Conversion"
+                },
+                {
+                  "id": 8,
+                  "chapter_id": 2,
+                  "title": "Constants and Literals"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "unit_number": 3,
+          "chapters": [
+            {
+              "id": 3,
+              "course_id": 1,
+              "name": "Control Structures",
+              "module_number": 1,
+              "unit_number": 3,
+              "topics": []
+            }
+          ]
+        }
+      ]
     },
-  ],
+    {
+      "module_number": 2,
+      "units": [
+        {
+          "unit_number": 1,
+          "chapters": [
+            {
+              "id": 4,
+              "course_id": 1,
+              "name": "Functions",
+              "module_number": 2,
+              "unit_number": 1,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "unit_number": 2,
+          "chapters": [
+            {
+              "id": 5,
+              "course_id": 1,
+              "name": "Object-Oriented Programming",
+              "module_number": 2,
+              "unit_number": 2,
+              "topics": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "module_number": 3,
+      "units": [
+        {
+          "unit_number": 1,
+          "chapters": [
+            {
+              "id": 6,
+              "course_id": 1,
+              "name": "Basic Algorithms",
+              "module_number": 3,
+              "unit_number": 1,
+              "topics": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
 };
 
 
@@ -75,7 +170,7 @@ export default function UploadPage() {
 
   const handleUpload = async () => {
     // if (!image) return;
-alert('test')
+    alert('test')
     setIsLoading(true);
     setExtractedText(null); // type is null
 
@@ -88,16 +183,16 @@ alert('test')
       const res = await fetch("/api/parse-syllabus", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text:' result.data.text' }),
+        body: JSON.stringify({ text: ' result.data.text' }),
       });
 
       //like this?? 
-      const parsedData = await res.json(); 
- 
-    setIsLoading(false);
+      const parsedData = await res.json();
+
+      setIsLoading(false);
 
 
-    setExtractedText(parsedData);  
+      setExtractedText(parsedData);
     } catch (error) {
       console.error('OCR Error:', error);
       setExtractedText('Failed to extract text.');
@@ -109,7 +204,7 @@ alert('test')
   return (
     <div className="max-w-xl mx-auto p-4">
       <h1 className="text-2xl font-semibold mb-4">Upload Your Syllabus Screenshot</h1>
-      
+
       <input
         type="file"
         accept="image/*"
@@ -136,7 +231,7 @@ alert('test')
       {extractedText && (
         <div className="mt-6 p-4 bg-gray-100 rounded shadow">
           <h2 className="text-lg font-medium mb-2">Extracted Text:</h2>
-          <ParsedSyllabus data={mockSyllabusData} /> 
+          <ParsedSyllabus data={extractedText} />
 
         </div>
       )}

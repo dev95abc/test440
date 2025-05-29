@@ -15,8 +15,7 @@ export default function LikeButton({ likes }: Props) {
             onClick={() => {setCount((c) => c + 1)}}
             className="text-sm text-blue-600 hover:underline"
         >
-            👍 {count} Like{count !== 1 && 's'}
-            <h2>sagar</h2>
+            👍 {count} Like{count !== 1 && 's'} 
         </button>
     );
 }

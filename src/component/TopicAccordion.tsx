@@ -14,6 +14,9 @@ export default function TopicAccordion({ topic }: TopicProps) {
   const explanations = useExplanationStore((state) => state.getExplanations(topic.title));
 
   const fetchExplanations = async () => {
+
+
+    //call this api here
     addExplanation(topic.title, {
       id: Date.now(), // Better ID generation using timestamp
       text: 'this is a new explanation for ' + topic.title,

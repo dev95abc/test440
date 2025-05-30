@@ -1,4 +1,5 @@
 // components/TopicAccordion.tsx
+'use client'
 import { useState } from 'react';
 import ExplanationCarousel from './ExplanationCarousel';
 import PromptInput from './PromptInput';
@@ -7,22 +8,32 @@ import { TopicProps } from '@/types';
 import { useTopicStore } from '@/app/stores/topicStore';
 import { useExplanationStore } from '@/app/stores/explanationStore';
 
-export default function TopicAccordion({ topic }: TopicProps) {
+export default function TopicAccordion({ topic, chpId }: TopicProps) {
   const isOpen = useTopicStore((state) => state.expandedTopics[topic.title] ?? false);
   const toggleTopicExpanded = useTopicStore((state) => state.toggleTopicExpanded);
-  const addExplanation = useExplanationStore((state) => state.addExplanation);
+  const addExplanations = useExplanationStore((state) => state.addExplanations);
   const explanations = useExplanationStore((state) => state.getExplanations(topic.title));
 
   const fetchExplanations = async () => {
+    try {
+      const res = await fetch(`/api/explanations?topicId=${topic.id}&chpId=${chpId}`, { //pass query in body
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
 
+        body: JSON.stringify({ title: topic.title }),
+      });
 
-    //call this api here
-    addExplanation(topic.title, {
-      id: Date.now(), // Better ID generation using timestamp
-      text: 'this is a new explanation for ' + topic.title,
-      prompt: 'test prompt',
-      likes: 4
-    });
+      console.log(res)
+      if (!res.ok) {
+        throw new Error('Failed to fetch explanation');
+      }
+
+      const data = await res.json();
+      console.log(data, 'dsataexp')
+      addExplanations(topic.title, data);
+    } catch (error) {
+      console.error('Error fetching explanation:', error);
+    }
   };
 
   const handleLoadMore = () => {
@@ -48,8 +59,8 @@ export default function TopicAccordion({ topic }: TopicProps) {
             <MarkAsLearnedToggle topicTitle={topic.title} />
           </div>
         ) : (
-          <button 
-            className="mt-3 text-blue-600 underline" 
+          <button
+            className="mt-3 text-blue-600 underline"
             onClick={handleLoadMore}
           >
             Load more

@@ -6,6 +6,7 @@ import { Explanation } from '@/types';
 interface ExplanationState {
   explanations: Record<string, Explanation[] | null>; // key = topicTitle
   addExplanation: (topicTitle: string, explanation: Explanation) => void;
+  addExplanations: (topicTitle: string, explanation: Explanation[]) => void;
   getExplanations: (topicTitle: string) => Explanation[] | null;
   likeExplanation: (topicTitle: string, id: number) => void;
 }
@@ -21,6 +22,15 @@ export const useExplanationStore = create<ExplanationState>()(
           explanations: {
             ...state.explanations,
             [topicTitle]: [...existing, explanation],
+          },
+        }), false, `addExplanation/${topicTitle}`);
+      },
+       addExplanations: (topicTitle, explanation) => {
+        const existing = get().explanations[topicTitle] || [];
+        set((state) => ({
+          explanations: {
+            ...state.explanations,
+            [topicTitle]: [...existing, ...explanation],
           },
         }), false, `addExplanation/${topicTitle}`);
       },

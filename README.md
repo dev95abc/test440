@@ -14,6 +14,12 @@ pnpm dev
 bun dev
 ```
 
+TODO:
+ocr + syllabus format
+authentication user just for like and saved
+likes and saved
+
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.

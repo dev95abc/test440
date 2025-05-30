@@ -59,9 +59,11 @@ export type CarouselProps = {
 };
 export type TopicProps = {
   topic: {
+    id:Number;
     title: string;
     explanations: Explanation[] | null;
   };
+  chpId: Number;
 };
 
 export type SyllabusProps = {

@@ -169,8 +169,7 @@ export default function UploadPage() {
   };
 
   const handleUpload = async () => {
-    // if (!image) return;
-    alert('test')
+    // if (!image) return; 
     setIsLoading(true);
     setExtractedText(null); // type is null
 
@@ -181,11 +180,11 @@ export default function UploadPage() {
 
 
       const res = await fetch("/api/parse-syllabus", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: ' result.data.text' }),
+        method: "GET",
+        headers: { "Content-Type": "application/json" }, 
       });
-
+ 
+      
       //like this?? 
       const parsedData = await res.json();
 

@@ -1,6 +1,6 @@
 export const dynamic = 'force-dynamic';
 
-const dummyResult ={
+const dummyResult = {
   "id": 1,
   "semester_id": 1,
   "course_code": "sagar ",
@@ -147,65 +147,32 @@ const dummyResult ={
 
 
 
-export async function POST(req) {
-  console.log(process.env.OPENAI_API_KEY, 'process.env.OPENAI_API_KEY}')
+export async function GET(req) {
   try {
-    const { text } = await req.json();
-
-
-
-    if (!text || text.trim() === "") {
-      return new Response(JSON.stringify({ error: "Text is required" }), { status: 400 });
-    }
-
-    const prompt = `
-You're an assistant that extracts structured syllabus information from raw text.
-Input: "${text}"
-Output format:
-{
-  "semester": "Semester 1",
-  "modules": [
-    {
-      "unit": "Unit 1",
-      "topics": ["Topic 1", "Topic 2"]
-    }
-  ]
-}
-Return only JSON.
-    `;
-
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
+    // const response = await fetch('http://localhost:8080/topics/:id', {
+    const response = await fetch('http://localhost:8080/courses/getAllDet/1', {
+      method: 'GET',
       headers: {
-        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        model: "gpt-3.5-turbo",
-        messages: [{ role: "user", content: prompt }],
-        temperature: 0.2,
-      }),
     });
+ 
+    if (!response.ok) {
+      throw new Error(`External API returned status ${response.status}`);
+    }
 
     const data = await response.json();
 
-    if (!data.choices || !data.choices[0]?.message?.content) {
-      console.error("OpenAI response malformed:", data);
-      //   return new Response(JSON.stringify({ error: "Invalid OpenAI response" }), { status: 500 });
-      return new Response(JSON.stringify(dummyResult), {
-        headers: { "Content-Type": "application/json" },
-      });
-    }
-
-    return new Response(JSON.stringify({ result: dummyResult }), {
-      headers: { "Content-Type": "application/json" },
+    return new Response(JSON.stringify(data), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
     });
 
   } catch (error) {
-    console.error("API Error:", error);
-    // return new Response(JSON.stringify({ error: "Internal Server Error" }), { status: 500 });
-    return new Response(JSON.stringify({ result: dummyResult }), {
-      headers: { "Content-Type": "application/json" },
+    console.error('API Error:', error);
+    return new Response(JSON.stringify({ error: 'Internal Server Error' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
     });
   }
 }

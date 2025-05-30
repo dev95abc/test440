@@ -150,7 +150,7 @@ const dummyResult = {
 export async function GET(req) {
   try {
     // const response = await fetch('http://localhost:8080/topics/:id', {
-    const response = await fetch('http://localhost:8080/courses/getAllDet/1', {
+    const response = await fetch('http://localhost:8080/courses/getAllDet/13', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

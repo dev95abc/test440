@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
     if (!topicId) {
         return NextResponse.json({ error: 'Missing topicId' }, { status: 400 });
     }
-console.log(topicId, chpId , 'jhelloooo')
+    console.log(topicId, chpId, 'jhelloooo')
     try {
         // const response = await fetch(`http://localhost:8080/explanations/topic/${topicId}`);  
         const response = await fetch(`http://localhost:8080/explanations/topic/${topicId}/${chpId}`, {

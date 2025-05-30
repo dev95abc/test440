@@ -6,150 +6,150 @@ import Tesseract from 'tesseract.js';
 import ParsedSyllabus from '@/component/ParsedSyllabus'
 
 // mockData.ts
-export const mockSyllabusData = {
-  "id": 1,
-  "semester_id": 1,
-  "course_code": "CS101",
-  "course_title": "Introduction to Computer Science",
-  "credits": 4,
-  "modules": [
-    {
-      "module_number": 1,
-      "units": [
-        {
-          "unit_number": 1,
-          "chapters": [
-            {
-              "id": 1,
-              "course_id": 1,
-              "name": "Introduction to Programming",
-              "module_number": 1,
-              "unit_number": 1,
-              "topics": [
-                {
-                  "id": 1,
-                  "chapter_id": 1,
-                  "title": "What is Programming?"
-                },
-                {
-                  "id": 2,
-                  "chapter_id": 1,
-                  "title": "History of Programming Languages"
-                },
-                {
-                  "id": 3,
-                  "chapter_id": 1,
-                  "title": "Setting Up Development Environment"
-                },
-                {
-                  "id": 4,
-                  "chapter_id": 1,
-                  "title": "Writing Your First Program"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "unit_number": 2,
-          "chapters": [
-            {
-              "id": 2,
-              "course_id": 1,
-              "name": "Variables and Data Types",
-              "module_number": 1,
-              "unit_number": 2,
-              "topics": [
-                {
-                  "id": 5,
-                  "chapter_id": 2,
-                  "title": "Understanding Variables"
-                },
-                {
-                  "id": 6,
-                  "chapter_id": 2,
-                  "title": "Primitive Data Types"
-                },
-                {
-                  "id": 7,
-                  "chapter_id": 2,
-                  "title": "Type Conversion"
-                },
-                {
-                  "id": 8,
-                  "chapter_id": 2,
-                  "title": "Constants and Literals"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "unit_number": 3,
-          "chapters": [
-            {
-              "id": 3,
-              "course_id": 1,
-              "name": "Control Structures",
-              "module_number": 1,
-              "unit_number": 3,
-              "topics": []
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "module_number": 2,
-      "units": [
-        {
-          "unit_number": 1,
-          "chapters": [
-            {
-              "id": 4,
-              "course_id": 1,
-              "name": "Functions",
-              "module_number": 2,
-              "unit_number": 1,
-              "topics": []
-            }
-          ]
-        },
-        {
-          "unit_number": 2,
-          "chapters": [
-            {
-              "id": 5,
-              "course_id": 1,
-              "name": "Object-Oriented Programming",
-              "module_number": 2,
-              "unit_number": 2,
-              "topics": []
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "module_number": 3,
-      "units": [
-        {
-          "unit_number": 1,
-          "chapters": [
-            {
-              "id": 6,
-              "course_id": 1,
-              "name": "Basic Algorithms",
-              "module_number": 3,
-              "unit_number": 1,
-              "topics": []
-            }
-          ]
-        }
-      ]
-    }
-  ]
-};
+// export const mockSyllabusData = {
+//   "id": 1,
+//   "semester_id": 1,
+//   "course_code": "CS101",
+//   "course_title": "Introduction to Computer Science",
+//   "credits": 4,
+//   "modules": [
+//     {
+//       "module_number": 1,
+//       "units": [
+//         {
+//           "unit_number": 1,
+//           "chapters": [
+//             {
+//               "id": 1,
+//               "course_id": 1,
+//               "name": "Introduction to Programming",
+//               "module_number": 1,
+//               "unit_number": 1,
+//               "topics": [
+//                 {
+//                   "id": 1,
+//                   "chapter_id": 1,
+//                   "title": "What is Programming?"
+//                 },
+//                 {
+//                   "id": 2,
+//                   "chapter_id": 1,
+//                   "title": "History of Programming Languages"
+//                 },
+//                 {
+//                   "id": 3,
+//                   "chapter_id": 1,
+//                   "title": "Setting Up Development Environment"
+//                 },
+//                 {
+//                   "id": 4,
+//                   "chapter_id": 1,
+//                   "title": "Writing Your First Program"
+//                 }
+//               ]
+//             }
+//           ]
+//         },
+//         {
+//           "unit_number": 2,
+//           "chapters": [
+//             {
+//               "id": 2,
+//               "course_id": 1,
+//               "name": "Variables and Data Types",
+//               "module_number": 1,
+//               "unit_number": 2,
+//               "topics": [
+//                 {
+//                   "id": 5,
+//                   "chapter_id": 2,
+//                   "title": "Understanding Variables"
+//                 },
+//                 {
+//                   "id": 6,
+//                   "chapter_id": 2,
+//                   "title": "Primitive Data Types"
+//                 },
+//                 {
+//                   "id": 7,
+//                   "chapter_id": 2,
+//                   "title": "Type Conversion"
+//                 },
+//                 {
+//                   "id": 8,
+//                   "chapter_id": 2,
+//                   "title": "Constants and Literals"
+//                 }
+//               ]
+//             }
+//           ]
+//         },
+//         {
+//           "unit_number": 3,
+//           "chapters": [
+//             {
+//               "id": 3,
+//               "course_id": 1,
+//               "name": "Control Structures",
+//               "module_number": 1,
+//               "unit_number": 3,
+//               "topics": []
+//             }
+//           ]
+//         }
+//       ]
+//     },
+//     {
+//       "module_number": 2,
+//       "units": [
+//         {
+//           "unit_number": 1,
+//           "chapters": [
+//             {
+//               "id": 4,
+//               "course_id": 1,
+//               "name": "Functions",
+//               "module_number": 2,
+//               "unit_number": 1,
+//               "topics": []
+//             }
+//           ]
+//         },
+//         {
+//           "unit_number": 2,
+//           "chapters": [
+//             {
+//               "id": 5,
+//               "course_id": 1,
+//               "name": "Object-Oriented Programming",
+//               "module_number": 2,
+//               "unit_number": 2,
+//               "topics": []
+//             }
+//           ]
+//         }
+//       ]
+//     },
+//     {
+//       "module_number": 3,
+//       "units": [
+//         {
+//           "unit_number": 1,
+//           "chapters": [
+//             {
+//               "id": 6,
+//               "course_id": 1,
+//               "name": "Basic Algorithms",
+//               "module_number": 3,
+//               "unit_number": 1,
+//               "topics": []
+//             }
+//           ]
+//         }
+//       ]
+//     }
+//   ]
+// };
 
 
 
@@ -181,16 +181,28 @@ export default function UploadPage() {
 
       const res = await fetch("/api/parse-syllabus", {
         method: "GET",
-        headers: { "Content-Type": "application/json" }, 
+        headers: { "Content-Type": "application/json" },
       });
- 
-      
+
+
       //like this?? 
       const parsedData = await res.json();
 
       setIsLoading(false);
 
+      //TODO:
+      // call http://localhost:8080/groke by passing parsedData
+      // redirect frontend to 'localhost/coursr_name/:id'
 
+      {/* move parsedSyllabus to a sperate page 
+      call this    const res = await fetch("/api/parse-syllabus", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" }, 
+      });
+
+      in the pasedSyllabus and get the ID from the params 
+
+*/}
       setExtractedText(parsedData);
     } catch (error) {
       console.error('OCR Error:', error);
@@ -230,6 +242,8 @@ export default function UploadPage() {
       {extractedText && (
         <div className="mt-6 p-4 bg-gray-100 rounded shadow">
           <h2 className="text-lg font-medium mb-2">Extracted Text:</h2>
+          {/* TODO */}
+          {/* move parsedSyllabus to a sperate page */}
           <ParsedSyllabus data={extractedText} />
 
         </div>

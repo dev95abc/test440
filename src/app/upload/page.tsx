@@ -1,9 +1,8 @@
-'use client'
+'use client';
 
-
-import { useState } from 'react';
-import Tesseract from 'tesseract.js';
-import ParsedSyllabus from '@/component/ParsedSyllabus'
+import { useState } from "react";
+import Tesseract from "tesseract.js";
+import ParsedSyllabus from "@/component/ParsedSyllabus";
 
 // mockData.ts
 // export const mockSyllabusData = {
@@ -151,12 +150,10 @@ import ParsedSyllabus from '@/component/ParsedSyllabus'
 //   ]
 // };
 
-
-
 export default function UploadPage() {
   const [image, setImage] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
-  const [extractedText, setExtractedText] = useState<string | null>('');
+  const [extractedText, setExtractedText] = useState<string | null>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -164,29 +161,62 @@ export default function UploadPage() {
     if (file) {
       setImage(file);
       setPreview(URL.createObjectURL(file));
-      setExtractedText(''); //type is string 
+      setExtractedText(""); //type is string
     }
   };
 
-  const handleUpload = async () => {
-    // if (!image) return; 
+  const handleUpload1 = async () => {
+    if (!image) return;
     setIsLoading(true);
     setExtractedText(null); // type is null
 
     try {
-      // const result = await Tesseract.recognize(image, 'eng', {
-      //   logger: (m) => console.log(m),
-      // });
-
-
-      const res = await fetch("/api/parse-syllabus", {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
+      const result = await Tesseract.recognize(image, "eng", {
+        logger: (m) => console.log(m),
       });
 
+      console.log(result, "final data");
 
-      //like this?? 
-      const parsedData = await res.json();
+    
+
+
+      try {
+        const res = await fetch('/api/groke', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(result.data.text),
+        });
+      
+        if (!res.ok) {
+          console.log('error');
+          const errorData = await res.json();
+          console.error('Error details:', errorData);
+          return;
+        }
+      
+        const data = await res.json();
+        
+        console.log('success');
+        console.log(data);
+      } catch (err) {
+        console.log('error');
+        console.error('Fetch failed:', err);
+      }
+      
+
+
+      // const data = await res.json();
+
+      //gets the formated syllabus
+
+      // http://localhost:8080/courses/getAllDet/13
+      // const res = await fetch("/api/parse-syllabus", {
+      //   method: "GET",
+      //   headers: { "Content-Type": "application/json" },
+      // });
+
+      //like this??
+      // const parsedData = await res.json();
 
       setIsLoading(false);
 
@@ -194,7 +224,8 @@ export default function UploadPage() {
       // call http://localhost:8080/groke by passing parsedData
       // redirect frontend to 'localhost/coursr_name/:id'
 
-      {/* move parsedSyllabus to a sperate page 
+      {
+        /* move parsedSyllabus to a sperate page 
       call this    const res = await fetch("/api/parse-syllabus", {
         method: "GET",
         headers: { "Content-Type": "application/json" }, 
@@ -202,19 +233,67 @@ export default function UploadPage() {
 
       in the pasedSyllabus and get the ID from the params 
 
-*/}
-      setExtractedText(parsedData);
+*/
+      }
+      // setExtractedText(parsedData);
     } catch (error) {
-      console.error('OCR Error:', error);
-      setExtractedText('Failed to extract text.');
+      console.error("OCR Error:", error);
+      setExtractedText("Failed to extract text.");
     } finally {
       setIsLoading(false);
     }
   };
 
+  const handleUpload = async () => {
+    if (!image) return;
+  
+    setIsLoading(true);
+    setExtractedText(null);
+  
+    try {
+      const result = await Tesseract.recognize(image, "eng", {
+        logger: (m) => console.log(m),
+      });
+  
+      const extracted = result.data.text;
+      console.log(extracted, 'success 123')
+      setExtractedText(extracted); // Store in state
+  
+      const res = await fetch('/api/groke', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: extracted }),
+      });
+  
+      if (!res.ok) {
+        console.log('error');
+        const errorData = await res.json();
+        console.error('Error details:', errorData);
+        return;
+      }
+  
+      const data = await res.json();
+      console.log('success');
+      console.log(data, 'success 123');
+  
+      // Redirect to /syllabus
+      // alert('hello worlkd')
+      window.location.href = `/syllabus/${data.id}`;
+  
+    } catch (error) {
+      console.log('error');
+      console.error("OCR or upload error:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  
+
   return (
     <div className="max-w-xl mx-auto p-4">
-      <h1 className="text-2xl font-semibold mb-4">Upload Your Syllabus Screenshot</h1>
+      <h1 className="text-2xl font-semibold mb-4">
+        Upload Your Syllabus Screenshot
+      </h1>
 
       <input
         type="file"
@@ -236,7 +315,7 @@ export default function UploadPage() {
         disabled={isLoading}
         className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition disabled:opacity-50"
       >
-        {isLoading ? 'Extracting...' : 'Extract Text with OCR'}
+        {isLoading ? "Extracting..." : "Extract Text with OCR"}
       </button>
 
       {extractedText && (
@@ -244,8 +323,7 @@ export default function UploadPage() {
           <h2 className="text-lg font-medium mb-2">Extracted Text:</h2>
           {/* TODO */}
           {/* move parsedSyllabus to a sperate page */}
-          <ParsedSyllabus data={extractedText} />
-
+          {/* <ParsedSyllabus data={extractedText} /> */}
         </div>
       )}
     </div>

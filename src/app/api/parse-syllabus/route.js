@@ -148,9 +148,13 @@ const dummyResult = {
 
 
 export async function GET(req) {
+
+  const { searchParams } = new URL(req.url);
+  const syllabus_id = searchParams.get('topicId');
+  console.log(req.url, 'u:::url')
   try {
     // const response = await fetch('http://localhost:8080/topics/:id', {
-    const response = await fetch('http://localhost:8080/courses/getAllDet/13', {
+    const response = await fetch(`http://localhost:8080/courses/getAllDet/${syllabus_id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

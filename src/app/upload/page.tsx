@@ -174,11 +174,7 @@ export default function UploadPage() {
       const result = await Tesseract.recognize(image, "eng", {
         logger: (m) => console.log(m),
       });
-
-      console.log(result, "final data");
-
-    
-
+  
 
       try {
         const res = await fetch('/api/groke', {

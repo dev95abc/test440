@@ -148,11 +148,12 @@ const dummyResult = {
 
 
 export async function GET(req) {
-
+  
   const { searchParams } = new URL(req.url);
-  const syllabus_id = searchParams.get('topicId');
-  console.log(req.url, 'u:::url')
+  const syllabus_id =  searchParams.get('syllabus_id');
+  console.log(req.url,syllabus_id, 'u::ss:url')
   try {
+
     // const response = await fetch('http://localhost:8080/topics/:id', {
     const response = await fetch(`http://localhost:8080/courses/getAllDet/${syllabus_id}`, {
       method: 'GET',

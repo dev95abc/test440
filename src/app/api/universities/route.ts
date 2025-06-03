@@ -9,7 +9,7 @@ export async function GET() {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }, 
         });
-        console.log('test', response)
+        // console.log('test', response)
 
         if (!response.ok) throw new Error('Failed to fetch from backend');
 
@@ -22,4 +22,27 @@ export async function GET() {
         return NextResponse.json(err);
     }
  
+}
+
+
+// app/api/universities/route.ts
+ 
+export async function POST(req: Request) {
+  try {
+    const body = await req.json();
+    const { name } = body;
+
+    const response = await fetch('http://localhost:8080/universities', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name }),
+    });
+
+    if (!response.ok) throw new Error('Failed to create university');
+    const data = await response.json();
+    return NextResponse.json(data, { status: 201 });
+  } catch (err) {
+    console.error('POST error:', err);
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+  }
 }

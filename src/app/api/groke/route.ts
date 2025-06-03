@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({textData :body.text}),
+      body: JSON.stringify({textData :body.text, major_id: body.major_id}),
     });
 
     const data = await backendResponse.json();
@@ -19,6 +19,11 @@ export async function POST(req: NextRequest) {
     console.error('Error in API proxy:', error);
     return NextResponse.json(
       { error: 'Failed to reach backend', details: (error as Error).message },
+//       {
+//   "error": "Failed to reach backend",
+//   "details": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+// }
+
       { status: 500 }
     );
   }

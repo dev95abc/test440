@@ -11,8 +11,7 @@ interface Props {  syllabus_id: string };
 export default  function ClientSyllabus({ syllabus_id } : Props) { 
   const [parsedData, setParsedData] = useState();
 
-  const fetchData = async () => { 
-alert("fetchData called with syllabus_id: " + syllabus_id);
+  const fetchData = async () => {  
     // http://localhost:8080/courses/getAllDet/13
     const res = await fetch(`/api/parse-syllabus?syllabus_id=${syllabus_id}`, {
       method: "GET",

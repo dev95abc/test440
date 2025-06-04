@@ -1,0 +1,240 @@
+comece | comer [|
+wows | smumormatesoing |
+MODULE -1
+
+Unit 1: Introduction to Simulation and Statistical Models
+
+Introduction to Simulation: System and System environment, Components of
+system, Type of systems, Type of models, Steps in simulation study, Advantages
+and Disadvantages of simulation.
+
+General Principles: Concepts of discrete event simulation, List processing,
+Statistical Models in Simulation: Useful statistical model, Discrete distribution, 
+ 
+Unit 2: Random Number Generation, Random Variate Generation, Input
+Modeling, and Output Analysis
+
+Random Number Generation: Properties of random numbers, Generation of
+pseudo random numbers, Techniques for generating random numbers, Tests for
+random numbers.
+ 
+ 
+
+EXPECTED OUTPUT: {
+        "id": 13,
+        "semester_id": 1,
+        "course_code": "SIM101",
+        "course_title": "Introduction to Simulation and Statistical Models",
+        "credits": 3,
+        "major_id": null,
+        "modules": [
+            {
+                "id": 1,
+                "course_id": 13,
+                "name": "Introduction to Simulation and Statistical Models",
+                "module_number": 1,
+                "unit_number": 1,
+                "topics": [
+                    {
+                        "id": 14,
+                        "chapter_id": 1,
+                        "title": "Introduction to Simulation"
+                    },
+                    {
+                        "id": 15,
+                        "chapter_id": 1,
+                        "title": "System and System Environment"
+                    },
+                    {
+                        "id": 16,
+                        "chapter_id": 1,
+                        "title": "Type of Models"
+                    },
+                    {
+                        "id": 17,
+                        "chapter_id": 1,
+                        "title": "Steps in Simulation Study"
+                    },
+                    {
+                        "id": 18,
+                        "chapter_id": 1,
+                        "title": "Advantages and Disadvantages of Simulation"
+                    },
+                    {
+                        "id": 24,
+                        "chapter_id": 1,
+                        "title": "Components of System"
+                    },
+                    {
+                        "id": 25,
+                        "chapter_id": 1,
+                        "title": "Type of Systems"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "course_id": 13,
+                "name": "General Principles",
+                "module_number": 1,
+                "unit_number": 1,
+                "topics": [
+                    {
+                        "id": 26,
+                        "chapter_id": 2,
+                        "title": "Concepts of discrete event simulation"
+                    },
+                    {
+                        "id":31,
+                        "chapter_id": 2,
+                        "title": "List processing"
+                    },
+                    {
+                        "id":27,
+                        "chapter_id": 2,
+                        "title": "Statistical Models in Simulation: Useful statistical model"
+                    },
+                    {
+                        "id": 28,
+                        "chapter_id": 2,
+                        "title": "Discrete distribution"
+                    }, 
+                ]
+            },
+            {
+                "id": 3,
+                "course_id": 13,
+                "name": "Random Number Generation, Random Variate Generation, Input Modeling, and Output Analysis",
+                "module_number": 3,
+                "unit_number": 1,
+                "topics": [
+                    {
+                        "id": 19,
+                        "chapter_id": 3,
+                        "title": "Random Number Generation"
+                    },
+                    {
+                        "id": 20,
+                        "chapter_id": 3,
+                        "title": "Properties of Random Numbers"
+                    },
+                    {
+                        "id": 21,
+                        "chapter_id": 3,
+                        "title": "Generation of Pseudo Random Numbers"
+                    },
+                    {
+                        "id": 22,
+                        "chapter_id": 3,
+                        "title": "Techniques for Generating Random Numbers"
+                    },
+                    {
+                        "id": 23,
+                        "chapter_id": 3,
+                        "title": "Tests for Random Numbers"
+                    }
+                ]
+            }
+        ]
+    }
+
+
+THE OUTPUT THAT IS GOT IS : {
+        "id": 1,
+        "semester_id": 1,
+        "course_code": "N/A",
+        "course_title": "Simulation and Statistical Models",
+        "credits": 3,
+        "major_id": null,
+        "modules": [
+            {
+                "id": 1,
+                "course_id": 1,
+                "name": "Introduction to Simulation and Statistical Models",
+                "module_number": 1,
+                "unit_number": 1,
+                "topics": [
+                    {
+                        "id": 1,
+                        "chapter_id": 1,
+                        "title": "Introduction to Simulation: System and System environment"
+                    },
+                    {
+                        "id": 2,
+                        "chapter_id": 1,
+                        "title": "Components of system"
+                    },
+                    {
+                        "id": 3,
+                        "chapter_id": 1,
+                        "title": "Type of systems"
+                    },
+                    {
+                        "id": 4,
+                        "chapter_id": 1,
+                        "title": "Type of models"
+                    },
+                    {
+                        "id": 5,
+                        "chapter_id": 1,
+                        "title": "Steps in simulation study"
+                    },
+                    {
+                        "id": 6,
+                        "chapter_id": 1,
+                        "title": "Advantages and Disadvantages of simulation"
+                    },
+                    {
+                        "id": 7,
+                        "chapter_id": 1,
+                        "title": "General Principles: Concepts of discrete event simulation"
+                    },
+                    {
+                        "id": 8,
+                        "chapter_id": 1,
+                        "title": "List processing"
+                    },
+                    {
+                        "id": 9,
+                        "chapter_id": 1,
+                        "title": "Statistical Models in Simulation: Useful statistical model"
+                    },
+                    {
+                        "id": 10,
+                        "chapter_id": 1,
+                        "title": "Discrete distribution"
+                    },
+                    
+                ]
+            },
+            {
+                "id": 2,
+                "course_id": 1,
+                "name": "Random Number Generation, Random Variate Generation, Input Modeling, and Output Analysis",
+                "module_number": 2,
+                "unit_number": 1,
+                "topics": [
+                    {
+                        "id": 20,
+                        "chapter_id": 2,
+                        "title": "Random Number Generation: Properties of random numbers"
+                    },
+                    {
+                        "id": 21,
+                        "chapter_id": 2,
+                        "title": "Generation of pseudo random numbers"
+                    },
+                    {
+                        "id": 22,
+                        "chapter_id": 2,
+                        "title": "Techniques for generating random numbers"
+                    },
+                    {
+                        "id": 23,
+                        "chapter_id": 2,
+                        "title": "Tests for random numbers"
+                    },
+                ]
+            }
+        ]
+    }

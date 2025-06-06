@@ -1,19 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(req: NextRequest) {
- 
-    const majorId = req.nextUrl.searchParams.get('majorId');
-    console.log('majorId:', majorId);
-    if (!majorId) {
-        return NextResponse.json({ error: 'majorId is required' }, { status: 400 });
-    }
-
+  
     try {
+        const majorId = req.nextUrl.searchParams.get('majorId');
+
+        // const { user_id }  = await req.json();
+ 
+        // console.log('majorId:', user_id);
+        if (!majorId) {
+            return NextResponse.json({ error: 'majorId is required' }, { status: 400 });
+        }
+
         const backendRes = await fetch(`http://localhost:8080/courses/getCourseByMajorId/${majorId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
             },
+            // body: JSON.stringify({
+            //     user_id: user_id
+            // }),
             // You can forward cookies or auth headers here if needed
             // credentials: 'include'
         });

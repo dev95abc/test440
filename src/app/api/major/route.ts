@@ -23,8 +23,7 @@ export async function GET(req: NextRequest) {
         const data = await backendRes.json();
         return NextResponse.json(data);
     } catch (error) {
-        console.error('Error fetching majors:', error);
-        console.log(error)
+        console.error('Error fetching majors:', error); 
         return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
     }
 }

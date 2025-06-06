@@ -7,9 +7,10 @@ interface Props {
   params: { syllabus_id: string };
 }
 
-export default function SyllabusPage({ params }: Props) {
-  const { syllabus_id } = params;
+export default async function SyllabusPage({ params }: Props) {
+  const { syllabus_id } = await params;
 
+  
   return (
     <main className="p-4">
       <h1 className="text-2xl font-bold mb-4">📘 Your Syllabus : {syllabus_id}</h1>

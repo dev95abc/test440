@@ -147,19 +147,23 @@ const dummyResult = {
 
 
 
-export async function GET(req) {
+export async function POST(req) {
   
   const { searchParams } = new URL(req.url);
   const syllabus_id =  searchParams.get('syllabus_id');
-  console.log(req.url,syllabus_id, 'u::ss:url')
+  
+    const body = await req.json();
+    const {  auth0_id} =body;
+  console.log(auth0_id,syllabus_id, 'u::ss:url')
   try {
 
     // const response = await fetch('http://localhost:8080/topics/:id', {
     const response = await fetch(`http://localhost:8080/courses/getAllDet/${syllabus_id}`, {
-      method: 'GET',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify({ auth0_id: auth0_id }),
     });
  
     if (!response.ok) {

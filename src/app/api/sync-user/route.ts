@@ -4,9 +4,9 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const { auth0_id, email, name } = body;
+    // let userID = Number(auth0_id.split('|')[1]);
     console.log('Syncing user:', { auth0_id, email, name });
 
-    // Replace this with your actual backend URL
     const backendRes = await fetch('http://localhost:8080/users/auth0-login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -18,8 +18,10 @@ export async function POST(req: NextRequest) {
       console.error('Backend error:', text);
       return NextResponse.json({ error: 'Failed to sync user' }, { status: 500 });
     }
+    const userData = await backendRes.json();
+    return NextResponse.json({ user: userData, success: true });
 
-    return NextResponse.json({ success: true });
+    // return NextResponse.json({ user: backendRes, success: true }); //how can i get user in my component?
   } catch (error) {
     console.error('Sync error:', error);
     return NextResponse.json({ error: 'Unexpected error' }, { status: 500 });

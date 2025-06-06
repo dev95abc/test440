@@ -1,15 +1,21 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react'; 
-
+import { useEffect, useState } from 'react';
+import { useUserStore } from '@/app/stores/userStore'; // adjust path as needed
 export default function UploadPage() {
+
+     const user = useUserStore((state) => state.user);
+
     const [universities, setUniversities] = useState([]);
     const [majors, setMajors] = useState([]);
     const [courses, setCourses] = useState([]);
     const [selectedUniversity, setSelectedUniversity] = useState('');
     const [selectedMajor, setSelectedMajor] = useState('');
-    
+    const [recentlyViewed, setRecentlyViewed] = useState([]); // Track recently viewed courses
+
+    console.log(user, 'userData');
+
     const router = useRouter();
 
     useEffect(() => {
@@ -17,7 +23,19 @@ export default function UploadPage() {
             .then(res => res.json())
             .then(setUniversities)
             .catch(console.error);
+
     }, []);
+
+  useEffect(() => {  
+        if( user?.id ) {
+            fetch(`/api/fetch_last_visited?userId=${user?.id}`)
+                .then(res => res.json())
+                .then(setRecentlyViewed)
+                .catch(console.error);
+        }
+
+    }, [user]);
+
 
     const handleUniversityClick = (id: string) => {
         setSelectedUniversity(id);
@@ -37,7 +55,7 @@ export default function UploadPage() {
             .catch(console.error);
     };
 
-     const handleCourseClick = (id: string) => {
+    const handleCourseClick = (id: string) => {
         router.push(`/syllabus/${id}`);
     };
     console.log(courses, 'courses')
@@ -82,7 +100,7 @@ export default function UploadPage() {
                         <h2 className="text-xl font-semibold">Courses</h2>
                         <ul className="list-disc list-inside">
                             {courses.map((c: any) => (
-                                <li key={c.id}  onClick={() => handleCourseClick(c.id)}>{c.course_title} | {c.course_code}</li> //on click redirect to /syllabus/{c.id}
+                                <li key={c.id} onClick={() => handleCourseClick(c.id)}>{c.course_title} | {c.course_code}</li> //on click redirect to /syllabus/{c.id}
                             ))}
                         </ul>
                     </div>

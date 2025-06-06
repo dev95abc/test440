@@ -9,7 +9,6 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: 'Missing topicId' }, { status: 400 });
     } 
     try {
-        // const response = await fetch(`http://localhost:8080/explanations/topic/${topicId}`);  
         const response = await fetch(`http://localhost:8080/explanations/topic/${topicId}/${chpId}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -32,3 +31,4 @@ export async function POST(req: NextRequest) {
         return NextResponse.json(err);
     }
 }
+

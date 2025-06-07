@@ -5,6 +5,8 @@ export type Explanation = {
   text: string;
   prompt: string;
   likes: number;
+  liked_by?: Number[];
+  likes_count?: number;
 };
 
 export type Topic = {
@@ -12,6 +14,7 @@ export type Topic = {
   id: Number,
   chapter_id: Number,
   explanations: Explanation[] | null;
+
 };
 
 export type ChaptersUnit = {

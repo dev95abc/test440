@@ -1,6 +1,12 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+## Getting Startd
+
+
+//todo: 
+featch lasted visted cources, 
+fix like 
+fix learned
 
 First, run the development server:
 

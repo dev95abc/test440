@@ -56,7 +56,7 @@ export default function TopicAccordion({ topic, chpId }: TopicProps) {
           <div className="mt-3 space-y-4">
             <ExplanationCarousel explanations={explanations} />
             <PromptInput topicTitle={topic.title} />
-            <MarkAsLearnedToggle topicTitle={topic.title} />
+            <MarkAsLearnedToggle topicTitle={topic.title} topicId={Number(topic.id)} />
           </div>
         ) : (
           <button

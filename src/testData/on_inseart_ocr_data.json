@@ -1,0 +1,277 @@
+export const data = {
+    "id": 19,
+    "semester_id": 1,
+    "course_code": "PSCS505",
+    "course_title": "Principles of Compiler Design",
+    "credits": 2,
+    "modules": [
+        {
+            "id": 31,
+            "course_id": 19,
+            "name": "Front end of Compiler",
+            "module_number": 1,
+            "unit_number": 1,
+            "topics": [
+                {
+                    "id": 162,
+                    "chapter_id": 31,
+                    "title": "Introduction to Compiler Design"
+                },
+                {
+                    "id": 163,
+                    "chapter_id": 31,
+                    "title": "Role and importance of compilers"
+                },
+                {
+                    "id": 164,
+                    "chapter_id": 31,
+                    "title": "Phases of compilation process"
+                },
+                {
+                    "id": 165,
+                    "chapter_id": 31,
+                    "title": "Compiler architecture and components"
+                },
+                {
+                    "id": 166,
+                    "chapter_id": 31,
+                    "title": "Lexical Analysis"
+                },
+                {
+                    "id": 167,
+                    "chapter_id": 31,
+                    "title": "Role of lexical analyzer"
+                },
+                {
+                    "id": 168,
+                    "chapter_id": 31,
+                    "title": "Regular expressions and finite automata"
+                },
+                {
+                    "id": 169,
+                    "chapter_id": 31,
+                    "title": "Lexical analyzer generators (e.g., Lex)"
+                },
+                {
+                    "id": 170,
+                    "chapter_id": 31,
+                    "title": "Syntax Analysis"
+                },
+                {
+                    "id": 171,
+                    "chapter_id": 31,
+                    "title": "Role of parser"
+                },
+                {
+                    "id": 172,
+                    "chapter_id": 31,
+                    "title": "Context-free grammars"
+                },
+                {
+                    "id": 173,
+                    "chapter_id": 31,
+                    "title": "Top-down parsing (LL. parsing)"
+                },
+                {
+                    "id": 174,
+                    "chapter_id": 31,
+                    "title": "Bottom-up parsing (LR parsing)"
+                },
+                {
+                    "id": 175,
+                    "chapter_id": 31,
+                    "title": "Syntax analyzer generators (e.g., Yacc/Bison)"
+                },
+                {
+                    "id": 176,
+                    "chapter_id": 31,
+                    "title": "Semantic Analysis"
+                },
+                {
+                    "id": 177,
+                    "chapter_id": 31,
+                    "title": "Role of semantic analyzer"
+                },
+                {
+                    "id": 178,
+                    "chapter_id": 31,
+                    "title": "Symbol table management"
+                },
+                {
+                    "id": 179,
+                    "chapter_id": 31,
+                    "title": "Type checking and type systems"
+                },
+                {
+                    "id": 180,
+                    "chapter_id": 31,
+                    "title": "Attribute grammars"
+                },
+                {
+                    "id": 181,
+                    "chapter_id": 31,
+                    "title": "Intermediate Code Generation"
+                },
+                {
+                    "id": 182,
+                    "chapter_id": 31,
+                    "title": "Intermediate representations (IR)"
+                },
+                {
+                    "id": 183,
+                    "chapter_id": 31,
+                    "title": "Three-address code generation"
+                },
+                {
+                    "id": 184,
+                    "chapter_id": 31,
+                    "title": "Quadruples and triples"
+                },
+                {
+                    "id": 185,
+                    "chapter_id": 31,
+                    "title": "Syntax-directed translation"
+                }
+            ]
+        },
+        {
+            "id": 32,
+            "course_id": 19,
+            "name": "Back end of Compiler",
+            "module_number": 2,
+            "unit_number": 1,
+            "topics": [
+                {
+                    "id": 186,
+                    "chapter_id": 32,
+                    "title": "Code Optimization"
+                },
+                {
+                    "id": 187,
+                    "chapter_id": 32,
+                    "title": "Data flow analysis"
+                },
+                {
+                    "id": 188,
+                    "chapter_id": 32,
+                    "title": "Common subexpression elimination"
+                },
+                {
+                    "id": 189,
+                    "chapter_id": 32,
+                    "title": "Constant folding and propagation"
+                },
+                {
+                    "id": 190,
+                    "chapter_id": 32,
+                    "title": "Loop optimization techniques"
+                },
+                {
+                    "id": 191,
+                    "chapter_id": 32,
+                    "title": "Code Generation"
+                },
+                {
+                    "id": 192,
+                    "chapter_id": 32,
+                    "title": "Code generation techniques"
+                },
+                {
+                    "id": 193,
+                    "chapter_id": 32,
+                    "title": "Target machine description"
+                },
+                {
+                    "id": 194,
+                    "chapter_id": 32,
+                    "title": "Register allocation"
+                },
+                {
+                    "id": 195,
+                    "chapter_id": 32,
+                    "title": "Instruction selection and scheduling"
+                },
+                {
+                    "id": 196,
+                    "chapter_id": 32,
+                    "title": "Runtime Environments"
+                },
+                {
+                    "id": 197,
+                    "chapter_id": 32,
+                    "title": "Activation records and stack management"
+                },
+                {
+                    "id": 198,
+                    "chapter_id": 32,
+                    "title": "Heap memory management"
+                },
+                {
+                    "id": 199,
+                    "chapter_id": 32,
+                    "title": "Call and return mechanisms"
+                },
+                {
+                    "id": 200,
+                    "chapter_id": 32,
+                    "title": "Exception handling"
+                },
+                {
+                    "id": 201,
+                    "chapter_id": 32,
+                    "title": "Lexical and Syntax Error Handling"
+                },
+                {
+                    "id": 202,
+                    "chapter_id": 32,
+                    "title": "Error recovery strategies"
+                },
+                {
+                    "id": 203,
+                    "chapter_id": 32,
+                    "title": "Error reporting and handling"
+                },
+                {
+                    "id": 204,
+                    "chapter_id": 32,
+                    "title": "Introduction to Compiler Tools, Techniques and Advanced Topics in Compiler Design"
+                },
+                {
+                    "id": 205,
+                    "chapter_id": 32,
+                    "title": "Lexical and syntax analyzer generators"
+                },
+                {
+                    "id": 206,
+                    "chapter_id": 32,
+                    "title": "Code generation frameworks (e.g., LLVM)"
+                },
+                {
+                    "id": 207,
+                    "chapter_id": 32,
+                    "title": "Debugging and testing compilers"
+                },
+                {
+                    "id": 208,
+                    "chapter_id": 32,
+                    "title": "Justin-time (JIT) compilation"
+                },
+                {
+                    "id": 209,
+                    "chapter_id": 32,
+                    "title": "Parallel and concurrent programming Support"
+                },
+                {
+                    "id": 210,
+                    "chapter_id": 32,
+                    "title": "Compiler optimization frameworks"
+                },
+                {
+                    "id": 211,
+                    "chapter_id": 32,
+                    "title": "Domain-specific language (DSL) compilation"
+                }
+            ]
+        }
+    ]
+}

@@ -5,6 +5,7 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
     const explanation_id = parseInt(params.id);
     const body = await req.json();
     const { auth0_id, email, name, picture } = body;
+    console.log('Like request body:', { auth0_id, email, name, picture } );
 
     const response = await fetch(`http://localhost:8080/users/like/${explanation_id}`, {
       method: 'POST',

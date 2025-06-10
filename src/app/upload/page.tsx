@@ -91,7 +91,7 @@ const handleMajorSubmit = async (major: Major) => {
 
     const data = await res.json();
     // Redirect if needed
-    // window.location.href = `/syllabus/${data.id}`;
+    window.location.href = `/syllabus/${data.id}`;
   } catch (error) {
     console.error('Unexpected error in handleMajorSubmit:', error);
     alert('An unexpected error occurred. Please try again.');

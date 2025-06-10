@@ -4,7 +4,7 @@ export async function POST(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const topicId = searchParams.get('topicId');
     const chpId = searchParams.get('chpId');
-    const { title } = await req.json();
+    const { title,contextString } = await req.json();
     if (!topicId) {
         return NextResponse.json({ error: 'Missing topicId' }, { status: 400 });
     } 
@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
         const response = await fetch(`http://localhost:8080/explanations/topic/${topicId}/${chpId}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title }),
+            body: JSON.stringify({ title,contextString }),
         }); 
 
         if (!response.ok) throw new Error('Failed to fetch from backend');

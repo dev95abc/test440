@@ -3,10 +3,12 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useUserStore } from '@/app/stores/userStore'; // adjust path as needed
+import { useLearnedTopicsStore } from '@/app/stores/learnedTopicsStore';
 
 export default function UserSyncClient({ user }: { user: any }) {
     const router = useRouter();
     const setUser = useUserStore((state) => state.setUser);
+    const { setLearnedTopics } = useLearnedTopicsStore();
 
     useEffect(() => {
         if (user?.sub && user?.email) {
@@ -25,9 +27,10 @@ export default function UserSyncClient({ user }: { user: any }) {
                     if (res.ok) {
                         router.push('/upload');
                         const data = await res.json();
-                        console.log(data, 'this is data');
-                        setUser(data?.user);
-
+                        console.log(data.user.user,data.user.learnedTopics, 'this is data');
+                        setUser(data?.user.user);
+                        setLearnedTopics(data?.user.learnedTopics || []);
+                        
                     } else {
                         console.error('Failed to sync user');
                     }

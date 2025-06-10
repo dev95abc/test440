@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { useUserStore } from '@/app/stores/userStore'; // adjust path as needed
 export default function UploadPage() {
 
-     const user = useUserStore((state) => state.user);
+    const user = useUserStore((state) => state.user);
 
     const [universities, setUniversities] = useState([]);
     const [majors, setMajors] = useState([]);
@@ -26,8 +26,10 @@ export default function UploadPage() {
 
     }, []);
 
-  useEffect(() => {  
-        if( user?.id ) {
+    useEffect(() => {
+        if (user?.id) {
+
+            console.log('Fetching recently viewed courses for user:', user.id);
             fetch(`/api/fetch_last_visited?userId=${user?.id}`)
                 .then(res => res.json())
                 .then(setRecentlyViewed)
@@ -35,6 +37,8 @@ export default function UploadPage() {
         }
 
     }, [user]);
+
+    
 
 
     const handleUniversityClick = (id: string) => {
@@ -61,6 +65,30 @@ export default function UploadPage() {
     console.log(courses, 'courses')
     return (
         <div className="p-6 space-y-6">
+
+
+                 <div>
+                <h2 className="text-xl font-semibold">Recently Visited Cources</h2>
+                <div className="flex gap-2 flex-wrap">
+                    {recentlyViewed.map((u: any) => (
+                        <button
+                            key={u.course_id}
+                             onClick={() => handleCourseClick(u.course_id)}
+                            className={`px - 3 py-1 border rounded `}>
+                            {u.course_code} | {u.course_title}
+                        </button>
+                    ))}
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
             <div>
                 <h2 className="text-xl font-semibold">Universities</h2>
                 <div className="flex gap-2 flex-wrap">

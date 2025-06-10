@@ -1,11 +1,42 @@
 // app/api/learned-topics/[topic]/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 
+
+
+export async function GET(req: NextRequest, { params }: { params:  { id: string } }) {
+  try {
+    
+    const user_id = parseInt(params.id); 
+    // let userID = Number(auth0_id.split('|')[1]); 
+
+    const backendRes = await fetch(`http://localhost:8080/users/learned_topics/${user_id}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }, 
+    });
+
+    if (!backendRes.ok) {
+      const text = await backendRes.text();
+      console.error('Backend error:', text);
+      return NextResponse.json({ error: 'Failed to sync user' }, { status: 500 });
+    }
+    const learnedTopics = await backendRes.json();
+    return NextResponse.json(learnedTopics);
+
+    // return NextResponse.json({ user: backendRes, success: true }); //how can i get user in my component?
+  } catch (error) {
+    console.error('Sync error:', error);
+    return NextResponse.json({ error: 'Unexpected error' }, { status: 500 });
+  }
+}
+
+
+
 export async function POST(req: NextRequest, { params }: { params:  { id: string } }) {
   try {
     const explanation_id = parseInt(params.id);
     const body = await req.json();
-    const {  user_id} = body;
+    const {  user_id, chapter_id} = body;
+    console.log("body in learned-topics", body, explanation_id, user_id, chapter_id);
 
     if (!user_id) {
       return NextResponse.json(
@@ -18,7 +49,8 @@ export async function POST(req: NextRequest, { params }: { params:  { id: string
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({  
-        id:user_id
+        user_id:user_id,
+        chapter_id:chapter_id
       }),
     });
 

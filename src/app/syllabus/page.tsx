@@ -1,16 +1,18 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react'; 
+import { useEffect, useState } from 'react';
+import { useUserStore } from '../stores/userStore'; 
 
 export default function UploadPage() {
     const [universities, setUniversities] = useState([]);
     const [majors, setMajors] = useState([]);
     const [courses, setCourses] = useState([]);
     const [selectedUniversity, setSelectedUniversity] = useState('');
-    const [selectedMajor, setSelectedMajor] = useState('');
-    
+    const [selectedMajor, setSelectedMajor] = useState(''); 
+
     const router = useRouter();
+ 
 
     useEffect(() => {
         fetch('/api/universities')
@@ -18,6 +20,10 @@ export default function UploadPage() {
             .then(setUniversities)
             .catch(console.error);
     }, []);
+
+
+ 
+
 
     const handleUniversityClick = (id: string) => {
         setSelectedUniversity(id);
@@ -37,7 +43,7 @@ export default function UploadPage() {
             .catch(console.error);
     };
 
-     const handleCourseClick = (id: string) => {
+    const handleCourseClick = (id: string) => {
         router.push(`/syllabus/${id}`);
     };
     console.log(courses, 'courses')
@@ -82,7 +88,7 @@ export default function UploadPage() {
                         <h2 className="text-xl font-semibold">Courses</h2>
                         <ul className="list-disc list-inside">
                             {courses.map((c: any) => (
-                                <li key={c.id}  onClick={() => handleCourseClick(c.id)}>{c.course_title} | {c.course_code}</li> //on click redirect to /syllabus/{c.id}
+                                <li key={c.id} onClick={() => handleCourseClick(c.id)}>{c.course_title} | {c.course_code}</li> //on click redirect to /syllabus/{c.id}
                             ))}
                         </ul>
                     </div>

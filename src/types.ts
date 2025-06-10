@@ -43,8 +43,11 @@ export type ParsedSyllabusProps = {
     semester: string;
     course_code: string;
     course_title: string;
+    courseCode?: string;
+    courseTitle?: string;
     credits: number;
     modules: Module[];
+    topicLength?: number;
   } | null;
 };
 
@@ -66,6 +69,11 @@ export type TopicProps = {
     title: string;
     explanations: Explanation[] | null;
   };
+  topics:{ 
+    id:Number;
+    title: string;
+    explanations: Explanation[] | null;
+  }[];
   chpId: Number;
 };
 

@@ -4,21 +4,24 @@ import { useTopicStore } from '@/app/stores/topicStore';
 import { useUser } from '@auth0/nextjs-auth0';
 import { CheckCircle2, Loader2 } from 'lucide-react';
 import { useUserStore } from '@/app/stores/userStore'; // adjust path as needed
+import { useLearnedTopicsStore } from '@/app/stores/learnedTopicsStore';
 
 type Props = {
   topicTitle: string;
   topicId?: number; // Optional, if needed for API calls
+  chapter_id: number; // Optional, if needed for API calls
 };
 
-export default function MarkAsLearnedToggle({ topicTitle, topicId }: Props) {
+export default function MarkAsLearnedToggle({ topicTitle, topicId, chapter_id }: Props) { 
+  const { isLearned, markAsLearned, unmarkAsLearned , learnedTopics} = useLearnedTopicsStore();
   const { user } = useUser();
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const userData = useUserStore((state) => state.user);
   const [error, setError] = useState<string | null>(null);
-   
+
   // Get state from store
-  const learned = useTopicStore(state => state.learnedTopics[topicTitle] ?? false);
+  const learned =  isLearned(topicId || 0); 
   const toggleLearned = useTopicStore(state => state.toggleLearned);
 
   const handleToggle = async () => {
@@ -33,19 +36,25 @@ export default function MarkAsLearnedToggle({ topicTitle, topicId }: Props) {
     try {
       // Optimistically update UI
       const newLearnedState = !learned;
+      if (newLearnedState) {
+        markAsLearned(topicId || 0);
+      } else {
+        unmarkAsLearned(topicId || 0);
+      }
       toggleLearned(topicTitle);
 
       // Call API to sync with backend
       const response = await fetch(`/api/learned_topics/${topicId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
           auth0_id: user.sub,
           email: user.email,
           name: user.name,
           picture: user.picture,
           learned: newLearnedState,
-          user_id:userData?.id, // Pass user ID if needed
+          user_id: userData?.id, // Pass user ID if needed
+          chapter_id:chapter_id
         }),
       });
 
@@ -74,11 +83,10 @@ export default function MarkAsLearnedToggle({ topicTitle, topicId }: Props) {
           type="button"
           onClick={handleToggle}
           disabled={isLoading}
-          className={`flex items-center gap-2 p-1 rounded-md ${
-            learned 
-              ? 'text-green-600 hover:bg-green-50' 
+          className={`flex items-center gap-2 p-1 rounded-md ${learned
+              ? 'text-green-600 hover:bg-green-50'
               : 'text-gray-500 hover:bg-gray-50'
-          }`}
+            }`}
           aria-label={learned ? 'Mark as not learned' : 'Mark as learned'}
         >
           {isLoading ? (
@@ -87,10 +95,10 @@ export default function MarkAsLearnedToggle({ topicTitle, topicId }: Props) {
             <CheckCircle2 className={`w-4 h-4 ${learned ? 'fill-current' : ''}`} />
           )}
           <span className="text-sm">
-            {learned ? 'Learned' : 'Mark as Learned'}
+            {learned ? 'Learned' : 'Mark as Learned'} 
           </span>
         </button>
-      </label>
+      </label> 
       {error && (
         <span className="text-xs text-red-500">{error}</span>
       )}

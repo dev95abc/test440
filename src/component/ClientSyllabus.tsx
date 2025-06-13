@@ -1,10 +1,7 @@
 "use client";
 
-import ParsedSyllabus from "@/component/ParsedSyllabus";
-import { useRouter } from 'next/navigation';
-import { use } from "react";
-import { useEffect, useState } from "react";
-import { useUser } from '@auth0/nextjs-auth0';
+import ParsedSyllabus from "@/component/ParsedSyllabus"; 
+import { useEffect, useState } from "react"; 
 import { useUserStore } from "@/app/stores/userStore";
 import { useLearnedTopicsStore } from "@/app/stores/learnedTopicsStore";
 
@@ -19,7 +16,7 @@ export default function ClientSyllabus({ syllabus_id }: Props) {
 
   const { learnedTopics, setLearnedTopics } = useLearnedTopicsStore();
   const fetchData = async () => {
-    // http://localhost:8080/courses/getAllDet/13
+    // https://server404-production.up.railway.app/courses/getAllDet/13
     // console.log("Fetching syllabus data for ID:", user);
     // if (!user) {
     //   console.error("User not authenticated");
@@ -43,7 +40,7 @@ export default function ClientSyllabus({ syllabus_id }: Props) {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  } );
 
 
   useEffect(() => {
@@ -82,7 +79,7 @@ export default function ClientSyllabus({ syllabus_id }: Props) {
       })
         .catch(console.error);
     }
-  }, [user]);
+  }, [user, parsedData, setLearnedTopics]);
 
 
   return (

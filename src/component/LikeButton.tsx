@@ -25,7 +25,7 @@ export default function LikeButton({ explanation }: Props) {
             setIsLiked(explanation.liked_by.some(u => Number(u) ==Number(userL?.id)));
             //   setIsLiked(explanation.liked_by.some(u => u === user.sub));
         }
-    }, [user, explanation.liked_by]);
+    }, [user, explanation.liked_by, userL?.id]);
 
     const handleLike = async () => {
         if (!user) {
@@ -53,8 +53,7 @@ export default function LikeButton({ explanation }: Props) {
             if (!res.ok) {
                 throw new Error(await res.text() || 'Failed to like explanation');
             }
-
-            const data = await res.json();
+ 
             const newCount = isLiked ? count - 1 : count + 1;
 
             setCount(newCount);

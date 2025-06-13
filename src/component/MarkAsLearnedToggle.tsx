@@ -13,7 +13,7 @@ type Props = {
 };
 
 export default function MarkAsLearnedToggle({ topicTitle, topicId, chapter_id }: Props) { 
-  const { isLearned, markAsLearned, unmarkAsLearned , learnedTopics} = useLearnedTopicsStore();
+  const { isLearned, markAsLearned, unmarkAsLearned } = useLearnedTopicsStore();
   const { user } = useUser();
   const [isLoading, setIsLoading] = useState(false);
 

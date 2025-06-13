@@ -12,7 +12,7 @@ export async function GET(req: NextRequest) {
             return NextResponse.json({ error: 'majorId is required' }, { status: 400 });
         }
 
-        const backendRes = await fetch(`http://localhost:8080/courses/getCourseByMajorId/${majorId}`, {
+        const backendRes = await fetch(`https://server404-production.up.railway.app/courses/getCourseByMajorId/${majorId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

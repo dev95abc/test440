@@ -6,7 +6,7 @@ export async function GET(req: NextRequest ) {
       const user_id = req.nextUrl.searchParams.get('userId'); 
       console.log('user_id in last-visited:', user_id); // Debugging line to check user_id
 
-    const response = await fetch(`http://localhost:8080/courses/last-visited-course/${user_id}`, {
+    const response = await fetch(`https://server404-production.up.railway.app/courses/last-visited-course/${user_id}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }, 
     });

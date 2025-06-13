@@ -7,7 +7,7 @@ export async function POST(req: NextRequest) {
     // let userID = Number(auth0_id.split('|')[1]);
     console.log('Syncing user:', { auth0_id, email, name });
 
-    const backendRes = await fetch('http://localhost:8080/users/auth0-login', {
+    const backendRes = await fetch('https://server404-production.up.railway.app/users/auth0-login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ auth0_id, email, name }),

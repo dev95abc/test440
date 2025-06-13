@@ -1,11 +1,10 @@
 'use client';
 
 import { useState } from "react";
-import Tesseract from "tesseract.js";
-import ParsedSyllabus from "@/component/ParsedSyllabus";
+import Tesseract from "tesseract.js"; 
 import UniversitySelectModal from "@/component/UniversitySelectModal";
-import MajorSelectModal from "@/component/MajorSelectModal";
-import { stringify } from "querystring";
+import MajorSelectModal from "@/component/MajorSelectModal"; 
+import Image from "next/image";
 
 export type University = {
   id: number;
@@ -113,7 +112,7 @@ const handleMajorSubmit = async (major: Major) => {
       />
 
       {preview && (
-        <img
+        <Image
           src={preview}
           alt="Preview"
           className="w-full max-h-96 object-contain mb-4 border"

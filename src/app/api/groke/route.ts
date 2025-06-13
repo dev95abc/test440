@@ -4,7 +4,7 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
-    const backendResponse = await fetch('http://localhost:8080/groke', {
+    const backendResponse = await fetch('https://server404-production.up.railway.app/groke', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

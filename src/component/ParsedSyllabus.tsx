@@ -1,5 +1,4 @@
-import SyllabusDisplay from "./SyllabusDisplay";
-import TopicExplanation from "./TopicExplanation";
+import SyllabusDisplay from "./SyllabusDisplay"; 
 import { ParsedSyllabusProps } from '@/types';
 
  

@@ -1,18 +1,14 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
-type Explanation = {
-  id: number;
-  text: string;
-  prompt: string;
-  likes: number;
-};
+// type Explanation = {
+//   id: number;
+//   text: string;
+//   prompt: string;
+//   likes: number;
+// };
 
-type Topic = {
-  title: string;
-  explanations: Explanation[];
-};
-
+ 
 type TopicStore = {
   expandedTopics: Record<string, boolean>;
   likedExplanations: Record<number, number>; // explanationId -> likes count
@@ -28,7 +24,7 @@ type TopicStore = {
 
 export const useTopicStore = create<TopicStore>()(
   devtools(
-    (set, get) => ({
+    (set) => ({
       expandedTopics: {},
       likedExplanations: {},
       learnedTopics: {},

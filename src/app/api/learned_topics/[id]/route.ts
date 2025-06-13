@@ -1,15 +1,20 @@
-// app/api/learned-topics/[topic]/route.ts
+// src\app\api\learned_topics\[id]\route.ts
 import { NextRequest, NextResponse } from 'next/server';
 
+type Params = {
+  params: {
+    id: string;
+  };
+};
 
 
-export async function GET(req: NextRequest, { params }: { params:  { id: string } }) {
+export async function GET(req: NextRequest, context: Params) {
   try {
     
-    const user_id = parseInt(params.id); 
+   const user_id = parseInt(context.params.id); 
     // let userID = Number(auth0_id.split('|')[1]); 
 
-    const backendRes = await fetch(`http://localhost:8080/users/learned_topics/${user_id}`, {
+    const backendRes = await fetch(`https://server404-production.up.railway.app/users/learned_topics/${user_id}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }, 
     });
@@ -31,9 +36,9 @@ export async function GET(req: NextRequest, { params }: { params:  { id: string 
 
 
 
-export async function POST(req: NextRequest, { params }: { params:  { id: string } }) {
+export async function POST(req: NextRequest, context: Params) {
   try {
-    const explanation_id = parseInt(params.id);
+    const explanation_id  = parseInt(context.params.id); 
     const body = await req.json();
     const {  user_id, chapter_id} = body;
     console.log("body in learned-topics", body, explanation_id, user_id, chapter_id);
@@ -45,7 +50,7 @@ export async function POST(req: NextRequest, { params }: { params:  { id: string
       );
     }
 
-    const response = await fetch(`http://localhost:8080/users/learned_topics/${explanation_id}`, {
+    const response = await fetch(`https://server404-production.up.railway.app/users/learned_topics/${explanation_id}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({  
@@ -69,3 +74,20 @@ export async function POST(req: NextRequest, { params }: { params:  { id: string
     );
   }
 }
+
+
+// // i get this error wheni build this:
+// .next/types/app/api/learned_topics/[id]/route.ts:49:7
+// Type error: Type '{ __tag__: "GET"; __param_position__: "second"; __param_type__: Params; }' does not satisfy the constraint 'ParamCheck<RouteContext>'.
+//   The types of '__param_type__.params' are incompatible between these types.
+//     Type '{ id: string; }' is missing the following properties from type 'Promise<any>': then, catch, finally, [Symbol.toStringTag]
+
+//   47 |     Diff<
+//   48 |       ParamCheck<RouteContext>,
+// > 49 |       {
+//      |       ^
+//   50 |         __tag__: 'GET'
+//   51 |         __param_position__: 'second'
+//   52 |         __param_type__: SecondArg<MaybeField<TEntry, 'GET'>>
+
+// Failed to compile.

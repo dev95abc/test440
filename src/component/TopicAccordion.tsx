@@ -1,6 +1,5 @@
 // components/TopicAccordion.tsx
-'use client'
-import { useState } from 'react';
+'use client' 
 import ExplanationCarousel from './ExplanationCarousel';
 import PromptInput from './PromptInput';
 import MarkAsLearnedToggle from './MarkAsLearnedToggle';

@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: 'Missing topicId' }, { status: 400 });
     } 
     try {
-        const response = await fetch(`http://localhost:8080/explanations/topic/${topicId}/${chpId}`, {
+        const response = await fetch(`https://server404-production.up.railway.app/explanations/topic/${topicId}/${chpId}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ title,contextString }),
@@ -22,12 +22,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json(data);
     } catch (err) {
         console.log('Backend fetch error:', err);
-        const fallback = {
-            id: Date.now(),
-            text: `Generated explanation for ${topicId}`,
-            prompt: 'Auto-generated prompt',
-            likes: Math.floor(Math.random() * 10),
-        };
+      
         return NextResponse.json(err);
     }
 }

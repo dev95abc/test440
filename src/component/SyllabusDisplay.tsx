@@ -11,7 +11,7 @@ export default function SyllabusDisplay({ modules }: SyllabusProps) {
           {/* <h2 className="text-2xl font-bold text-blue-700 mb-2"> Module : {mod.module}</h2> */}
           <hr />
           {mod.units.map((unit, unitIdx) => (
-            <div key={unitIdx} className="pl-4">
+            <div key={unitIdx} className="">
               {/* <h3 className="text-lg font-semibold text-gray-800 mb-2">Unit : {unit.unit}</h3> */}
 
               <h2 className="text-2xl font-bold text-blue-700 mb-2">Unit : {unit.unit}</h2>

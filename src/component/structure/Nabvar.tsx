@@ -20,6 +20,11 @@ export default async function Navbar() {
                     >
                         Upload Your Syllabus
                     </Link>
+                    <Link
+                        href="/home"
+                        className="px-4 py-2 bg-green-700 text-white rounded-sm hover:text-black"
+                    >Home
+                    </Link>
 
                     {session && (
                         <Link

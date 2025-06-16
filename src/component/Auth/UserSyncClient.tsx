@@ -39,7 +39,7 @@ export default function UserSyncClient({ user }: { user: AuthUser }) {
             console.log(data.user.user, data.user.learnedTopics, 'this is data');
             setUser(data?.user.user);
             setLearnedTopics(data?.user.learnedTopics || []);
-            router.push('/upload');
+            router.push('/home');
           } else {
             console.error('Failed to sync user');
           }

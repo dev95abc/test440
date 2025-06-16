@@ -48,7 +48,7 @@ const handleLoadMore = () => {
 };
 
 return (
-  <div className="border rounded-lg p-4 bg-white shadow">
+  <div className="border rounded-lg p-2 bg-white shadow">
     <button
       className="w-full text-left font-medium text-blue-800 text-md flex justify-between items-center"
       onClick={() => toggleTopicExpanded(topic.title)}

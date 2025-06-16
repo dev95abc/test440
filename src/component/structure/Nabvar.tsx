@@ -4,8 +4,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 interface NavbarClientProps {
-    session?: any; // Replace 'any' with your actual session type if available
+    session?: object | null;
 }
+
 
 export default function Navbar({ session }: NavbarClientProps) {
     const [showNavbar, setShowNavbar] = useState(true);

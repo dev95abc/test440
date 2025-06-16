@@ -6,14 +6,17 @@ import MarkAsLearnedToggle from './MarkAsLearnedToggle';
 import { TopicProps } from '@/types';
 import { useTopicStore } from '@/app/stores/topicStore';
 import { useExplanationStore } from '@/app/stores/explanationStore';
+import { useState } from 'react';
 
 export default function TopicAccordion({ topic, chpId, topics }: TopicProps) {
   const isOpen = useTopicStore((state) => state.expandedTopics[topic.title] ?? false);
   const toggleTopicExpanded = useTopicStore((state) => state.toggleTopicExpanded);
   const addExplanations = useExplanationStore((state) => state.addExplanations);
   const explanations = useExplanationStore((state) => state.getExplanations(topic.title));
+  const [loading, setLoading] = useState(false)
 
   const fetchExplanations = async () => {
+    setLoading(true)
     let contextString = '';
 
     topics.map((t) => {
@@ -36,7 +39,9 @@ export default function TopicAccordion({ topic, chpId, topics }: TopicProps) {
     const data = await res.json();
     console.log(data, 'dsataexp')
     addExplanations(topic.title, data);
+    setLoading(false)
   } catch (error) {
+    setLoading(false)
     console.error('Error fetching explanation:', error);
   }
 };
@@ -66,7 +71,8 @@ return (
       ) : (
         <button
           className="mt-3 text-blue-600 underline"
-          onClick={handleLoadMore}
+          onClick={handleLoadMore} 
+          disabled={loading}
         >
           Load more
         </button>

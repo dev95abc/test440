@@ -36,9 +36,7 @@ export default function UploadPage() {
     const [selectedUniversity, setSelectedUniversity] = useState('');
     const [selectedMajor, setSelectedMajor] = useState('');
     const [recentlyViewed, setRecentlyViewed] = useState<ViewedCourse[]>([]);
-
-    let key = process.env.AUTH0_SECRET
-
+ 
     const router = useRouter();
 
     useEffect(() => {

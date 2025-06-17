@@ -13,8 +13,8 @@ export async function POST(req) {
   console.log(auth0_id,syllabus_id, 'u::ss:url')
   try {
 
-    // const response = await fetch('https://server404-production.up.railway.app/topics/:id', {
-    const response = await fetch(`https://server404-production.up.railway.app/courses/getAllDet/${syllabus_id}`, {
+    // const response = await fetch('${process.env.API_URL}topics/:id', {
+    const response = await fetch(`${process.env.API_URL}courses/getAllDet/${syllabus_id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

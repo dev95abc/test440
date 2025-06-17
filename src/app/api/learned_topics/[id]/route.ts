@@ -14,7 +14,7 @@ export async function GET(req: NextRequest, context: Params) {
    const user_id = parseInt(context.params.id); 
     // let userID = Number(auth0_id.split('|')[1]); 
 
-    const backendRes = await fetch(`https://server404-production.up.railway.app/users/learned_topics/${user_id}`, {
+    const backendRes = await fetch(`${process.env.API_URL}users/learned_topics/${user_id}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }, 
     });
@@ -50,7 +50,7 @@ export async function POST(req: NextRequest, context: Params) {
       );
     }
 
-    const response = await fetch(`https://server404-production.up.railway.app/users/learned_topics/${explanation_id}`, {
+    const response = await fetch(`${process.env.API_URL}users/learned_topics/${explanation_id}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({  

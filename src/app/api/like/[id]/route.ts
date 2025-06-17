@@ -7,7 +7,7 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
     const { auth0_id, email, name, picture } = body;
     console.log('Like request body:', { auth0_id, email, name, picture } );
 
-    const response = await fetch(`https://server404-production.up.railway.app/users/like/${explanation_id}`, {
+    const response = await fetch(`${process.env.API_URL}users/like/${explanation_id}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({  auth0_id, email, name, picture }),

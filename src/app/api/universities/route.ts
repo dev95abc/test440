@@ -4,8 +4,8 @@ export async function GET() {
 
 
     try {
-        // const response = await fetch(`https://server404-production.up.railway.app/explanations/topic/${topicId}`);  
-        const response = await fetch(`https://server404-production.up.railway.app/universities`, {
+        // const response = await fetch(`${process.env.API_URL}explanations/topic/${topicId}`);  
+        const response = await fetch(`${process.env.API_URL}universities`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }, 
         });
@@ -32,7 +32,7 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { name } = body;
 
-    const response = await fetch('https://server404-production.up.railway.app/universities', {
+    const response = await fetch(`${process.env.API_URL}universities`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name }),

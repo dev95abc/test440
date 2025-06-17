@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: 'Missing topicId' }, { status: 400 });
     } 
     try {
-        const response = await fetch(`https://server404-production.up.railway.app/explanations/topic/${topicId}/${chpId}`, {
+        const response = await fetch(`${process.env.API_URL}explanations/topic/${topicId}/${chpId}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ title,contextString }),

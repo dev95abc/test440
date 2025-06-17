@@ -8,7 +8,7 @@ export async function GET(req: NextRequest) {
     }
 
     try {
-        const backendRes = await fetch(`https://server404-production.up.railway.app/majors/${universityId}`, {
+        const backendRes = await fetch(`${process.env.API_URL}majors/${universityId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ export async function POST(req: Request) {
         const body = await req.json();
         const { name, universityId } = body;
 
-        const response = await fetch('https://server404-production.up.railway.app/majors', {
+        const response = await fetch(`${process.env.API_URL}majors`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, universityId }),

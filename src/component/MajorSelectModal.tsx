@@ -85,7 +85,7 @@ export default function MajorSelectModal({
                         placeholder="Search or create new"
                     />
                     <div className="max-h-40 overflow-y-auto mb-4">
-                        {filtered.length > 0 && filtered.map((m) => (
+                        {Array.isArray(filtered) && filtered.length > 0 &&  filtered.map((m) => (
                             <div
                                 key={m.id}
                                 onClick={() => handleSelect(m)}

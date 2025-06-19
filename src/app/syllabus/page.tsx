@@ -63,7 +63,7 @@ export default function UploadPage() {
             <div>
                 <h2 className="text-xl font-semibold">Universities</h2>
                 <div className="flex gap-2 flex-wrap">
-                    {universities.map((u) => (
+                    {Array.isArray(universities) && universities.length > 0 && universities.map((u) => (
                         <button
                             key={u.id}
                             onClick={() => handleUniversityClick(u.id)}
@@ -79,7 +79,7 @@ export default function UploadPage() {
                 <div>
                     <h2 className="text-xl font-semibold">Majors</h2>
                     <div className="flex gap-2 flex-wrap">
-                        {majors.map((m) => (
+                         { Array.isArray(majors) && majors.length > 0 && majors.map((m) => (
                             <button
                                 key={m.id}
                                 onClick={() => handleMajorClick(m.id)}
@@ -96,7 +96,7 @@ export default function UploadPage() {
                 <div>
                     <h2 className="text-xl font-semibold">Courses</h2>
                     <ul className="list-disc list-inside">
-                        {courses.map((c) => (
+                        {Array.isArray(courses) && courses.length > 0 && courses.map((c) => (
                             <li
                                 key={c.id}
                                 onClick={() => handleCourseClick(c.id)}

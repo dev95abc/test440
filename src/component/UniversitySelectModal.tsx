@@ -77,7 +77,7 @@ export default function UniversitySelectModal({
                         placeholder="Search or create new"
                     />
                     <div className="max-h-40 overflow-y-auto mb-4">
-                        {filtered.map((u) => (
+                        { Array.isArray(filtered) && filtered.length > 0 && filtered.map((u) => (
                             <div
                                 key={u.id}
                                 onClick={() => handleSelect(u)}

@@ -115,6 +115,8 @@ const handleMajorSubmit = async (major: Major) => {
         <Image
           src={preview}
           alt="Preview"
+          width={100}
+          height={100}
           className="w-full max-h-96 object-contain mb-4 border"
         />
       )}

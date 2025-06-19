@@ -66,7 +66,7 @@ return (
         <div className="mt-3 space-y-4">
           <ExplanationCarousel explanations={explanations} />
           <PromptInput topicTitle={topic.title} />
-          <MarkAsLearnedToggle topicTitle={topic.title} topicId={Number(topic.id)} chapter_id={Number(chpId)} />
+          <MarkAsLearnedToggle topicTitle={topic.title} topicId={Number(topic.id)} chapter_id={Number(chpId)} course_id={course_id}/>
         </div>
       ) : (
         <button

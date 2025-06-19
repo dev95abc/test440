@@ -28,17 +28,20 @@ export default function MajorSelectModal({
     const [newMajor, setNewMajor] = useState('');
 
     useEffect(() => {
-        setFiltered(
-            majors.filter((m) =>
-                m.name.toLowerCase().includes(search.toLowerCase())
+        if (majors.length > 0){
+
+            setFiltered(
+                majors.filter((m) =>
+                    m.name.toLowerCase().includes(search.toLowerCase())
             )
         );
+    }
     }, [search, majors]);
 
     const handleCreate = async () => {
         const created = { id: -1, name: newMajor, universityId: selectedUniversity?.id || null };
         try {
-            const res = await fetch(`/api/major`, { //pass query in body
+            const res = await fetch(`/api/major`, { //pass query in body    
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
 
@@ -82,7 +85,7 @@ export default function MajorSelectModal({
                         placeholder="Search or create new"
                     />
                     <div className="max-h-40 overflow-y-auto mb-4">
-                        {filtered.map((m) => (
+                        {filtered.length > 0 && filtered.map((m) => (
                             <div
                                 key={m.id}
                                 onClick={() => handleSelect(m)}

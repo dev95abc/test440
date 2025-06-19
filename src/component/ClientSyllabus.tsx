@@ -36,6 +36,7 @@ export default function ClientSyllabus({ syllabus_id }: Props) {
       
       if (res.ok) {
         const data = await res.json();
+        console.log(data, 'last-visited-course')
         setLearnedTopics(data || []);
       } else {
         console.error('Failed to sync user');

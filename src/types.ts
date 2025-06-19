@@ -75,6 +75,7 @@ export type TopicProps = {
     explanations: Explanation[] | null;
   }[];
   chpId: number;
+  course_id: number;
 };
 
 export type SyllabusProps = {

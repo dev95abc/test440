@@ -83,7 +83,7 @@ export default function UploadPage() {
             <div>
                 <h2 className="text-xl font-semibold">Recently Visited Courses</h2>
                 <div className="flex gap-2 flex-wrap">
-                    {recentlyViewed.map((u) => (
+                    {recentlyViewed.length > 0 && recentlyViewed.map((u) => (
                         <button
                             key={u.course_id}
                             onClick={() => handleCourseClick(u.course_id)}

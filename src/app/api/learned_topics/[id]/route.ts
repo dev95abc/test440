@@ -10,13 +10,13 @@ type Params = {
 
 export async function GET(req: NextRequest, context: Params) {
   try {
-    
-   const user_id = parseInt(context.params.id); 
+
+    const user_id = parseInt(context.params.id);
     // let userID = Number(auth0_id.split('|')[1]); 
 
     const backendRes = await fetch(`${process.env.API_URL}users/learned_topics/${user_id}`, {
       method: 'GET',
-      headers: { 'Content-Type': 'application/json' }, 
+      headers: { 'Content-Type': 'application/json' },
     });
 
     if (!backendRes.ok) {
@@ -38,10 +38,10 @@ export async function GET(req: NextRequest, context: Params) {
 
 export async function POST(req: NextRequest, context: Params) {
   try {
-    const explanation_id  = parseInt(context.params.id); 
+    const explanation_id = parseInt(context.params.id);
     const body = await req.json();
-    const {  user_id, chapter_id} = body;
-    console.log("body in learned-topics", body, explanation_id, user_id, chapter_id);
+    const { user_id, chapter_id,course_id } = body;
+    console.log("body in learned-topics", body, explanation_id, user_id, course_id);
 
     if (!user_id) {
       return NextResponse.json(
@@ -53,9 +53,10 @@ export async function POST(req: NextRequest, context: Params) {
     const response = await fetch(`${process.env.API_URL}users/learned_topics/${explanation_id}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({  
-        user_id:user_id,
-        chapter_id:chapter_id
+      body: JSON.stringify({
+        user_id: user_id,
+        chapter_id: chapter_id,
+        course_id:course_id
       }),
     });
 

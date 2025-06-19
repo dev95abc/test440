@@ -10,9 +10,10 @@ type Props = {
   topicTitle: string;
   topicId?: number; // Optional, if needed for API calls
   chapter_id: number; // Optional, if needed for API calls
+  course_id: number; // Optional, if needed for API calls
 };
 
-export default function MarkAsLearnedToggle({ topicTitle, topicId, chapter_id }: Props) { 
+export default function MarkAsLearnedToggle({ topicTitle, topicId, chapter_id,course_id }: Props) { 
   const { isLearned, markAsLearned, unmarkAsLearned } = useLearnedTopicsStore();
   const { user } = useUser();
   const [isLoading, setIsLoading] = useState(false);
@@ -54,9 +55,11 @@ export default function MarkAsLearnedToggle({ topicTitle, topicId, chapter_id }:
           picture: user.picture,
           learned: newLearnedState,
           user_id: userData?.id, // Pass user ID if needed
-          chapter_id:chapter_id
+          chapter_id:chapter_id,
+          course_id:course_id
         }),
       });
+      console.log(response,'response')
 
       if (!response.ok) {
         // Revert if API call fails

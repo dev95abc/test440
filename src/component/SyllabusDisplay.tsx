@@ -21,7 +21,7 @@ export default function SyllabusDisplay({ modules }: SyllabusProps) {
 
                   <div className="space-y-2" key={chpIdx}>
                     {chp.topics.map((topic, topicIdx) => (
-                      <TopicAccordion key={topicIdx} topic={topic} chpId={chp.id} topics={chp.topics} />
+                      <TopicAccordion key={topicIdx} topic={topic} chpId={chp.id} topics={chp.topics} course_id={chp.course_id} />
                     ))}
                   </div>
                 </>

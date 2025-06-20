@@ -30,8 +30,7 @@ export const useUserStore = create<UserStore>()(
         },
       }),
       {
-        name: 'UserStore', // name of item in storage (must be unique)
-        // storage: createJSONStorage(() => sessionStorage), // optional: use sessionStorage instead
+        name: 'UserStore', // name of item in storage (must be unique) 
       }
     ),
     {

@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 import MarkAsLearnedToggle from './MarkAsLearnedToggle'; 
-import { Explanation, TopicExplanationProps } from '@/types';
-import PromptInput from './PromptInput';
+import { Explanation, TopicExplanationProps } from '@/types'; 
 
  
 export default function TopicExplanation({ topic }: TopicExplanationProps) {

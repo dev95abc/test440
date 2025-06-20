@@ -5,24 +5,24 @@ export type Explanation = {
   text: string;
   prompt: string;
   likes: number;
-  liked_by?: Number[];
+  liked_by?: number[];
   likes_count?: number;
 };
 
 export type Topic = {
   title: string;
-  id: Number,
-  chapter_id: Number,
+  id: number,
+  chapter_id: number,
   explanations: Explanation[] | null;
 
 };
 
 export type ChaptersUnit = {
-  id: Number;
-  course_id: Number,
-  name: String,
-  module_number: Number,
-  unit_number: Number,
+  id: number;
+  course_id: number,
+  name: string,
+  module_number: number,
+  unit_number: number,
   topics: Topic[]
 }
 
@@ -39,12 +39,15 @@ export type Module = {
 export type ParsedSyllabusProps = {
   data: {
 
-    id: Number;
+    id: number;
     semester: string;
     course_code: string;
     course_title: string;
+    courseCode?: string;
+    courseTitle?: string;
     credits: number;
     modules: Module[];
+    topicLength?: number;
   } | null;
 };
 
@@ -62,11 +65,17 @@ export type CarouselProps = {
 };
 export type TopicProps = {
   topic: {
-    id:Number;
+    id:number;
     title: string;
     explanations: Explanation[] | null;
   };
-  chpId: Number;
+  topics:{ 
+    id:number;
+    title: string;
+    explanations: Explanation[] | null;
+  }[];
+  chpId: number;
+  course_id: number;
 };
 
 export type SyllabusProps = {

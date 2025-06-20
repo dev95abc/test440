@@ -11,7 +11,7 @@ export default function SyllabusDisplay({ modules }: SyllabusProps) {
           {/* <h2 className="text-2xl font-bold text-blue-700 mb-2"> Module : {mod.module}</h2> */}
           <hr />
           {mod.units.map((unit, unitIdx) => (
-            <div key={unitIdx} className="pl-4">
+            <div key={unitIdx} className="">
               {/* <h3 className="text-lg font-semibold text-gray-800 mb-2">Unit : {unit.unit}</h3> */}
 
               <h2 className="text-2xl font-bold text-blue-700 mb-2">Unit : {unit.unit}</h2>
@@ -19,9 +19,9 @@ export default function SyllabusDisplay({ modules }: SyllabusProps) {
                 <> 
                   <h3 className="text-lg font-semibold text-gray-800 mb-2">{chp.name}</h3>
 
-                  <div className="space-y-2">
+                  <div className="space-y-2" key={chpIdx}>
                     {chp.topics.map((topic, topicIdx) => (
-                      <TopicAccordion key={topicIdx} topic={topic} chpId={chp.id} />
+                      <TopicAccordion key={topicIdx} topic={topic} chpId={chp.id} topics={chp.topics} course_id={chp.course_id} />
                     ))}
                   </div>
                 </>

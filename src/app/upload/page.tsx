@@ -1,11 +1,10 @@
 'use client';
 
 import { useState } from "react";
-import Tesseract from "tesseract.js";
-import ParsedSyllabus from "@/component/ParsedSyllabus";
+import Tesseract from "tesseract.js"; 
 import UniversitySelectModal from "@/component/UniversitySelectModal";
-import MajorSelectModal from "@/component/MajorSelectModal";
-import { stringify } from "querystring";
+import MajorSelectModal from "@/component/MajorSelectModal"; 
+import Image from "next/image";
 
 export type University = {
   id: number;
@@ -91,7 +90,7 @@ const handleMajorSubmit = async (major: Major) => {
 
     const data = await res.json();
     // Redirect if needed
-    // window.location.href = `/syllabus/${data.id}`;
+    window.location.href = `/syllabus/${data.id}`;
   } catch (error) {
     console.error('Unexpected error in handleMajorSubmit:', error);
     alert('An unexpected error occurred. Please try again.');
@@ -113,9 +112,11 @@ const handleMajorSubmit = async (major: Major) => {
       />
 
       {preview && (
-        <img
+        <Image
           src={preview}
           alt="Preview"
+          width={100}
+          height={100}
           className="w-full max-h-96 object-contain mb-4 border"
         />
       )}

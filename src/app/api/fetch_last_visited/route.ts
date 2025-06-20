@@ -3,10 +3,10 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function GET(req: NextRequest ) {
 
     try {
-      const user_id = req.nextUrl.searchParams.get('user_id'); 
+      const user_id = req.nextUrl.searchParams.get('userId'); 
       console.log('user_id in last-visited:', user_id); // Debugging line to check user_id
 
-    const response = await fetch(`http://localhost:8080/courses/last-visited-course/${user_id}`, {
+    const response = await fetch(`${process.env.API_URL}courses/last-visited-course/${user_id}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }, 
     });

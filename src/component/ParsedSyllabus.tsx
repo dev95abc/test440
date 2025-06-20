@@ -1,5 +1,4 @@
-import SyllabusDisplay from "./SyllabusDisplay";
-import TopicExplanation from "./TopicExplanation";
+import SyllabusDisplay from "./SyllabusDisplay"; 
 import { ParsedSyllabusProps } from '@/types';
 
  
@@ -8,10 +7,10 @@ export default function ParsedSyllabus({ data }: ParsedSyllabusProps) {
   if (!data) return null;
 
   return (
-    <div className="mt-6 p-4 bg-green-50 rounded shadow">
+    <div className="mt-6 p-2 bg-green-50 rounded shadow">
       <h2 className="text-xl font-bold mb-4">{data.semester}</h2>
       <h3 className="text-lg font-semibold text-purple-700 mb-2">
-        {data.courseCode} - {data.courseTitle} ({data.credits} credits)
+        {data?.course_code} - {data?.course_title} ({data.credits} credits)
       </h3>
       <div className="space-y-6">
         {/* {data.modules.map((mod, modIdx) => (

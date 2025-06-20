@@ -77,7 +77,7 @@ export default function UniversitySelectModal({
                         placeholder="Search or create new"
                     />
                     <div className="max-h-40 overflow-y-auto mb-4">
-                        {filtered.map((u) => (
+                        { Array.isArray(filtered) && filtered.length > 0 && filtered.map((u) => (
                             <div
                                 key={u.id}
                                 onClick={() => handleSelect(u)}
@@ -88,7 +88,7 @@ export default function UniversitySelectModal({
                         ))}
                     </div>
                     <button onClick={handleCreate} className="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" >
-                        Create "{newUniversity}"
+                        Create &quot;{newUniversity}&quot;
                     </button>
                 </Dialog.Panel>
             </div>

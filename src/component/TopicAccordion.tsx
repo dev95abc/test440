@@ -8,7 +8,7 @@ import { useTopicStore } from '@/app/stores/topicStore';
 import { useExplanationStore } from '@/app/stores/explanationStore';
 import { useState } from 'react';
 
-export default function TopicAccordion({ topic, chpId, topics }: TopicProps) {
+export default function TopicAccordion({ topic, chpId, topics,course_id }: TopicProps) {
   const isOpen = useTopicStore((state) => state.expandedTopics[topic.title] ?? false);
   const toggleTopicExpanded = useTopicStore((state) => state.toggleTopicExpanded);
   const addExplanations = useExplanationStore((state) => state.addExplanations);

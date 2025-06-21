@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/api/*"
+  to = "server404-production.up.railway.app/:splat"
+  status = 200
+  force = true

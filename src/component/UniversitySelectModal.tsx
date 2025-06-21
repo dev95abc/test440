@@ -22,14 +22,16 @@ export default function UniversitySelectModal({
     const [newUniversity, setNewUniversity] = useState('');
 
     useEffect(() => {
-        setFiltered(
-            universities.filter((u) =>
-                u.name.toLowerCase().includes(search.toLowerCase())
-            )
-        );
+        if (Array.isArray(universities) && universities.length > 0) { 
+            setFiltered(
+                universities.filter((u) =>
+                    u.name.toLowerCase().includes(search.toLowerCase())
+                )
+            );
+        }
     }, [search, universities]);
 
-    const handleCreate =async  () => {
+    const handleCreate = async () => {
         const created = { id: -1, name: newUniversity };
         try {
             const res = await fetch(`/api/universities`, { //pass query in body
@@ -45,7 +47,7 @@ export default function UniversitySelectModal({
             }
 
             const data = await res.json();
-            console.log(data, 'dsataexp') 
+            console.log(data, 'dsataexp')
             created.id = data.id; // Assuming the backend returns the created university with an ID
         } catch (error) {
             console.error('Error fetching explanation:', error);
@@ -54,7 +56,7 @@ export default function UniversitySelectModal({
         onClose();
     };
 
-    const handleSelect = (u: University) => { 
+    const handleSelect = (u: University) => {
 
         onSubmit(u);
         onClose();
@@ -77,7 +79,7 @@ export default function UniversitySelectModal({
                         placeholder="Search or create new"
                     />
                     <div className="max-h-40 overflow-y-auto mb-4">
-                        { Array.isArray(filtered) && filtered.length > 0 && filtered.map((u) => (
+                        {Array.isArray(filtered) && filtered.length > 0 && filtered.map((u) => (
                             <div
                                 key={u.id}
                                 onClick={() => handleSelect(u)}

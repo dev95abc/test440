@@ -32,11 +32,14 @@ export const useLearnedTopicsStore = create<LearnedTopicsState>()(
 
         unmarkAsLearned: (topicId) => {
           const { learnedTopics } = get();
-          set(
-            { learnedTopics: learnedTopics.filter((t) => t.topic_id !== topicId) },
-            false,
-            'unmarkAsLearned'
-          );
+          if ( Array.isArray(learnedTopics) && learnedTopics.length > 0) {
+
+            set(
+              { learnedTopics: learnedTopics?.filter((t) => t.topic_id !== topicId) },
+              false,
+              'unmarkAsLearned'
+            );
+          }
         },
 
         isLearned: (topicId) => {

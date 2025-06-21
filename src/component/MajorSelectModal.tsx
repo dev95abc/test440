@@ -28,7 +28,7 @@ export default function MajorSelectModal({
     const [newMajor, setNewMajor] = useState('');
 
     useEffect(() => {
-        if (majors.length > 0){
+        if (Array.isArray(majors) && majors.length > 0){
 
             setFiltered(
                 majors.filter((m) =>

@@ -1,10 +1,11 @@
+
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
-    const backendResponse = await fetch(`${process.env.API_URL}groke`, {
+    const backendResponse = await fetch(`https://server404-production.up.railway.app/api/groke`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

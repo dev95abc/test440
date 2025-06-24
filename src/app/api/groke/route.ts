@@ -123,8 +123,7 @@ const parseSyllabusWithGemini = async (rawSyllabusText: string): Promise<ParsedS
       """
 
       ONLY RETURN THE JSON OUTPUT, NOTHING ELSE. DO NOT INCLUDE ANY EXPLANATIONS.`;
-
-    const GEMINI_API_KEY = process.env.GEMINI_API_KEY || 'YOUR_DEFAULT_API_KEY';
+ 
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyB6FTfeIq4MsPfl2wJO0x9XWl2fr3aovyE`;
 
     const response = await fetch(apiUrl, {

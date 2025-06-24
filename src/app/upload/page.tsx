@@ -80,6 +80,7 @@ const handleMajorSubmit = async (major: Major) => {
         major_id: major.id,
       }),
     });
+    console.log(res, 'this is res groke')
 
     if (!res.ok) {
       const errorText = await res.text();

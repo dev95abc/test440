@@ -32,7 +32,7 @@ export const useLearnedTopicsStore = create<LearnedTopicsState>()(
 
         unmarkAsLearned: (topicId) => {
           const { learnedTopics } = get();
-          if ( Array.isArray(learnedTopics) && learnedTopics.length > 0) {
+          if (Array.isArray(learnedTopics) && learnedTopics.length > 0) {
 
             set(
               { learnedTopics: learnedTopics?.filter((t) => t.topic_id !== topicId) },

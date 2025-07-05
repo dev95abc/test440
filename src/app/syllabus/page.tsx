@@ -40,7 +40,7 @@ export default function UploadPage() {
         setSelectedUniversity(id);
         setSelectedMajor('');
         setCourses([]);
-        fetch(`/api/major?universityId=${id}`)
+        fetch(`/api/majors?universityId=${id}`)
             .then(res => res.json())
             .then((data: Major[]) => setMajors(data))
             .catch(console.error);

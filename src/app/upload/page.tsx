@@ -144,7 +144,7 @@ const handleMajorSubmit = async (major: Major) => {
               setSelectedUniversity(uni);
               setShowUniversityModal(false);
               // Fetch majors for selected university
-              const majorRes = await fetch(`/api/major?universityId=${uni.id}`);
+              const majorRes = await fetch(`/api/majors?universityId=${uni.id}`);
               const majors = await majorRes.json();
               setMajorList(majors);
               setShowMajorModal(true);
